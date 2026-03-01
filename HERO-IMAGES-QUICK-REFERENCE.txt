@@ -1,0 +1,116 @@
+===============================================
+HERO IMAGES - QUICK SETUP REFERENCE
+===============================================
+
+✅ YOUR WEBSITE IS NOW READY FOR HERO IMAGES!
+
+The code has been updated. Now you just need to add the images.
+
+-----------------------------------------------
+FOLDER STRUCTURE YOU NEED TO CREATE:
+-----------------------------------------------
+
+website/
+  ├── index.html (already exists)
+  └── images/
+      └── hero/
+          ├── silicone-service.jpg
+          ├── monocouche-service.jpg
+          ├── ewi-service.jpg
+          ├── plastering-service.jpg
+          ├── drylining-service.jpg
+          └── gallery-projects.jpg
+
+-----------------------------------------------
+WHICH IMAGE GOES WHERE:
+-----------------------------------------------
+
+HOME PAGE:
+  → silicone-service.jpg
+
+SILICONE RENDERING PAGE:
+  → silicone-service.jpg
+
+MONOCOUCHE RENDERING PAGE:
+  → monocouche-service.jpg
+
+EWI SYSTEMS PAGE:
+  → ewi-service.jpg
+
+INTERNAL PLASTERING PAGE:
+  → plastering-service.jpg
+
+DRY LINING PAGE:
+  → drylining-service.jpg
+
+PROJECT GALLERY PAGE:
+  → gallery-projects.jpg
+
+-----------------------------------------------
+IMAGE REQUIREMENTS:
+-----------------------------------------------
+
+✓ Format: JPG or PNG
+✓ Size: 1920 x 1080 pixels (recommended)
+✓ File Size: Under 500KB each
+✓ Content: High-quality photos of your work
+
+-----------------------------------------------
+STEP-BY-STEP:
+-----------------------------------------------
+
+1. Open File Explorer / Finder
+2. Go to your website folder
+3. Create a new folder called "images"
+4. Inside images, create a folder called "hero"
+5. Copy your 6 images into the hero folder
+6. Rename them to match the names above
+7. Done! Refresh your website to see them
+
+-----------------------------------------------
+NAMING IS CRITICAL!
+-----------------------------------------------
+
+Must be EXACT (use hyphens, not spaces):
+
+✅ silicone-service.jpg
+✅ monocouche-service.jpg
+✅ ewi-service.jpg
+✅ plastering-service.jpg
+✅ drylining-service.jpg
+✅ gallery-projects.jpg
+
+❌ Don't use spaces or underscores
+❌ Don't use .jpeg (use .jpg)
+❌ Don't use capital letters
+
+-----------------------------------------------
+WHAT YOUR IMAGES WILL LOOK LIKE:
+-----------------------------------------------
+
+Each service page will have:
+
+┌─────────────────────────────────────────┐
+│  FULL-WIDTH HERO IMAGE (100% screen)   │
+│  with dark overlay and gradient        │
+│                                         │
+│  Overlaid text:                        │
+│  - Service Title (large)               │
+│  - Service Description                 │
+│  - "Get Quote" Button                  │
+└─────────────────────────────────────────┘
+
+Then below: Features, Details, FAQs, etc.
+
+-----------------------------------------------
+READY TO START?
+-----------------------------------------------
+
+1. Do you have the images ready?
+2. How many images do you have prepared?
+3. What are the image filenames?
+4. Which service does each image show?
+
+Let me know, and I can help you place them!
+
+===============================================

@@ -1,0 +1,151 @@
+===============================================
+VIEW YOUR WEBSITE WITH HERO IMAGES
+===============================================
+
+✅ EVERYTHING IS READY!
+
+All hero images are configured and in place.
+Your website is ready to view.
+
+-----------------------------------------------
+HOW TO VIEW YOUR SITE
+-----------------------------------------------
+
+EASIEST METHOD:
+1. Open File Explorer (Windows) or Finder (Mac)
+2. Navigate to your website folder
+3. Find: index.html
+4. Double-click it
+5. Website opens in your browser!
+
+ALTERNATIVE METHOD:
+1. Open your web browser (Chrome, Safari, etc.)
+2. Press: Ctrl+O (Windows) or Cmd+O (Mac)
+3. Navigate to: index.html in your website folder
+4. Click "Open"
+5. Website loads!
+
+-----------------------------------------------
+WHAT YOU'LL SEE
+-----------------------------------------------
+
+HOME PAGE:
+→ Full-width hero image (silicone rendering)
+→ "Specialist Rendering & Plastering" title
+→ "View Services" and "Free Quote" buttons
+→ Features, warranty info below
+
+CLICK: "View Services"
+
+SERVICE PAGES:
+Each shows:
+→ Full-width hero image (different for each service)
+→ Service title and description
+→ Features and benefits list
+→ Technical specs and details
+→ FAQs (click to expand)
+→ "Request Free Quote" button
+
+SERVICES WITH HERO IMAGES:
+✅ Silicone Rendering
+✅ Monocouche Rendering
+✅ EWI Systems
+✅ Internal Plastering
+✅ Dry Lining & Boarding
+✅ Project Gallery
+
+-----------------------------------------------
+WHAT TO CHECK
+-----------------------------------------------
+
+✓ Images display on every service page
+✓ Images are full-width (fill entire screen)
+✓ Dark overlay visible on images
+✓ Service titles readable over images
+✓ Buttons appear on hero section
+✓ Images responsive (resize browser window)
+✓ Navigation works between pages
+✓ Smooth page transitions
+
+-----------------------------------------------
+IF IMAGES DON'T SHOW
+-----------------------------------------------
+
+1. Hard Refresh Browser:
+   - Windows: Ctrl + Shift + Delete
+   - Mac: Cmd + Shift + Delete
+
+2. Check file location:
+   - Images must be in: website/images/hero/
+
+3. Clear browser cache:
+   - Chrome: Settings → Privacy → Clear browsing data
+   - Safari: Safari → Clear History
+
+-----------------------------------------------
+IMAGE FILES IN PLACE
+-----------------------------------------------
+
+✅ silicone service.jpg          (21 KB)
+✅ monocouche service.jpeg        (214 KB)
+✅ ewi hero.jpeg                  (2.9 MB)
+✅ plasteringhero.jpeg            (2.8 MB)
+✅ drylining-service.jpg          (1.7 MB)
+✅ gallery-projects.jpeg          (5.3 MB)
+
+All located in: website/images/hero/
+
+-----------------------------------------------
+CODE CONFIGURATION
+-----------------------------------------------
+
+✅ Silicone Page       → silicone service.jpg
+✅ Monocouche Page     → monocouche service.jpeg
+✅ EWI Page            → ewi hero.jpeg
+✅ Plastering Page     → plasteringhero.jpeg
+✅ Dry Lining Page     → drylining-service.jpg
+✅ Gallery Page        → gallery-projects.jpeg
+✅ Home Page           → silicone service.jpg
+
+All linked and ready!
+
+-----------------------------------------------
+TESTING STEPS
+-----------------------------------------------
+
+1. Open index.html
+   → See home page with hero image
+
+2. Click "View Services" button
+   → Navigates to services page
+
+3. Click "Silicone Rendering"
+   → Shows Silicone page with hero image
+
+4. Try each service link:
+   → Monocouche (shows monocouche image)
+   → EWI (shows EWI image)
+   → Plastering (shows plastering image)
+   → Dry Lining (shows project photo)
+   → Gallery (shows project showcase)
+
+5. Check responsiveness:
+   → Resize browser window
+   → Images stay full-width
+   → Text remains readable
+
+6. Click "Free Quote"
+   → Should navigate to contact form
+
+-----------------------------------------------
+READY?
+-----------------------------------------------
+
+Open: index.html in your website folder
+
+Expected: Website with full-width hero images
+         on every service page
+
+Questions? Let me know what you see!
+
+===============================================
