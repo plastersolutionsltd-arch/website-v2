@@ -1484,129 +1484,6 @@
                             q: 'What warranty do you provide?',
                             a: 'We provide a 10-year workmanship guarantee on our installation and application. The manufacturer warranty ranges from 25+ years depending on the brand chosen. This covers material defects and guarantees performance for decades. We stand behind every project.'
                         }
-                    ],
-                    colorPalette: [
-                        { name: 'Cream', hex: '#E8E4DC' },
-                        { name: 'Taupe', hex: '#D4C4B0' },
-                        { name: 'Warm Stone', hex: '#A89968' },
-                        { name: 'Weathered', hex: '#8B7D6B' },
-                        { name: 'White', hex: '#FFFFFF' },
-                        { name: 'Off-White', hex: '#F5F5F5' },
-                        { name: 'Light Grey', hex: '#C0C0C0' },
-                        { name: 'Charcoal', hex: '#808080' },
-                        { name: 'Bronze', hex: '#D4A574' },
-                        { name: 'Terracotta', hex: '#8B4513' },
-                        { name: 'Sage Green', hex: '#3D5A50' },
-                        { name: 'Deep Navy', hex: '#2C3E50' }
-                    ],
-                    systemComparison: [
-                        {
-                            name: 'Full Silicone',
-                            badge: '★ Gold Standard',
-                            featured: true,
-                            description: 'The premium choice for maximum durability and minimal maintenance.',
-                            pros: [
-                                '25-30 year lifespan',
-                                'Self-cleaning hydrophobic surface',
-                                'Prevents algae and damp',
-                                'Maximum breathability',
-                                'Through-colored (won\'t peel)',
-                                'Flexible & crack-resistant'
-                            ],
-                            cons: [
-                                'Higher upfront cost',
-                                'Requires proper application'
-                            ]
-                        },
-                        {
-                            name: 'Silicone Enhanced',
-                            description: 'Smart hybrid system combining silicone benefits with cost efficiency.',
-                            pros: [
-                                'Better water resistance',
-                                'Enhanced flexibility',
-                                'Premium finish at mid-range price',
-                                'Good durability (15-20 years)',
-                                'Improved breathability'
-                            ],
-                            cons: [
-                                'Less durable than full silicone',
-                                'May require maintenance'
-                            ]
-                        },
-                        {
-                            name: 'Acrylic',
-                            description: 'Flexible all-rounder for modern, cost-effective solutions.',
-                            pros: [
-                                'Most cost-effective option',
-                                'Highly flexible & impact-resistant',
-                                'Wide colour range',
-                                'Quick application',
-                                'Vibrant finish'
-                            ],
-                            cons: [
-                                'Shorter lifespan (8-12 years)',
-                                'Requires periodic maintenance',
-                                'Less water repellent'
-                            ]
-                        }
-                    ],
-                    pricingGuide: [
-                        {
-                            property: 'Mid-Terrace',
-                            description: 'Typical 2-3 bed, single elevation',
-                            priceRange: '£4,500 – £6,500',
-                            details: [
-                                'Ideal for refreshing traditional brick terraces',
-                                'Single-colour finish',
-                                'Standard scaffolding included'
-                            ]
-                        },
-                        {
-                            property: '3 Bed Semi',
-                            description: 'Typical 3 elevation, gable end',
-                            priceRange: '£6,500 – £9,500',
-                            details: [
-                                'Covers three main elevations',
-                                'Price varies with gable size',
-                                'Option to add EWI systems'
-                            ]
-                        },
-                        {
-                            property: 'Detached Property',
-                            description: 'Typical all 4 elevations',
-                            priceRange: '£9,500 – £13,000+',
-                            details: [
-                                'Comprehensive transformation',
-                                'All elevations included',
-                                'Most benefit from self-cleaning properties'
-                            ]
-                        }
-                    ],
-                    systemBreakdown: [
-                        {
-                            layer: 'Base Coat Foundation',
-                            description: 'Fibre-reinforced polymer-modified base coat applied directly to substrate. Provides strength and ensures proper adhesion.'
-                        },
-                        {
-                            layer: 'Alkali-Resistant Mesh',
-                            description: 'High-grade reinforcement mesh embedded into base coat. Allows system to flex with building movement, preventing hairline cracks.'
-                        },
-                        {
-                            layer: 'Levelling Coat',
-                            description: 'Thin levelling coat creates smooth, uniform surface ensuring consistent texture and finish quality.'
-                        },
-                        {
-                            layer: 'Primer',
-                            description: 'Professional primer ensures optimal adhesion and colour intensity for the final topcoat.'
-                        },
-                        {
-                            layer: 'Silicone Topcoat',
-                            description: 'Premium silicone finish provides hydrophobic, self-cleaning, through-colored surface that defines system performance.'
-                        },
-                        {
-                            layer: 'Texture Options',
-                            description: 'Choose from fine, medium, or coarse textures (typically 1.5mm). Affects water drainage, light play, and aesthetics.'
-                        }
                     ]
                 },
                 'monocouche': {
@@ -1631,6 +1508,28 @@
                         { label: 'Weather Resistance', value: 'Excellent' },
                         { label: 'Vapor Permeability', value: 'Class 1' },
                         { label: 'Durability', value: '20-25 Years' }
+                    ],
+                    applicationProcess: [
+                        {
+                            step: '1. Surface Preparation',
+                            description: 'Clean substrate thoroughly, repair cracks and defects, ensure surface is sound and free from loose material.'
+                        },
+                        {
+                            step: '2. Moisture Check',
+                            description: 'Verify substrate moisture levels are within specification (typically under 4% for concrete, 12% for brick).'
+                        },
+                        {
+                            step: '3. Primer Application',
+                            description: 'Apply appropriate primer if recommended for substrate type to ensure optimal adhesion and performance.'
+                        },
+                        {
+                            step: '4. Monocouche Application',
+                            description: 'Apply 12-15mm coat using specialized trowel techniques. Texture and finish applied during application.'
+                        },
+                        {
+                            step: '5. Curing',
+                            description: 'Allow minimum 7-14 days full cure depending on weather conditions before paint application or final finishing.'
+                        }
                     ],
                     colorPalette: [
                         { name: 'Off White', hex: '#f5f3f0' },
@@ -1679,121 +1578,10 @@
                             q: 'What maintenance does monocouche render require?',
                             a: 'Monocouche render requires minimal maintenance. Annual visual inspections are recommended to check for any damage. Occasional gentle cleaning with a soft brush or low-pressure wash (below 60 bar) keeps it looking fresh. Most properties require cleaning only every 3-5 years, if needed.'
                         }
-                    ],
-                    systemComparison: [
-                        {
-                            name: 'Monocouche',
-                            badge: '⚡ Single Coat',
-                            featured: true,
-                            description: 'Fast, efficient, cost-effective single-coat rendering system.',
-                            pros: [
-                                'Rapid application (single coat)',
-                                'Cost-effective installation',
-                                '20-25 year durability',
-                                'Excellent breathability',
-                                'Strong adhesion to all substrates',
-                                'Stone-like aesthetic finish'
-                            ],
-                            cons: [
-                                'Requires good substrate prep',
-                                'Weather dependent (7-14 day cure)',
-                                'Regular maintenance needed (every 3-5 years)'
-                            ]
-                        },
-                        {
-                            name: 'Multi-Coat Acrylic',
-                            description: 'Traditional multi-layer acrylic render system.',
-                            pros: [
-                                'Lower initial cost per coat',
-                                'Familiar traditional method',
-                                'Wide colour range',
-                                'Flexible finish options'
-                            ],
-                            cons: [
-                                'Requires multiple coats',
-                                'Longer application time',
-                                'Shorter lifespan (8-12 years)',
-                                'Higher maintenance needs',
-                                'Color fading issues'
-                            ]
-                        },
-                        {
-                            name: 'Silicone',
-                            description: 'Premium self-cleaning render system.',
-                            pros: [
-                                'Self-cleaning hydrophobic surface',
-                                'Longest lifespan (25-30 years)',
-                                'Minimal maintenance required',
-                                'Superior water resistance'
-                            ],
-                            cons: [
-                                'Higher upfront cost',
-                                'May be overkill for some projects',
-                                'Requires specialist application'
-                            ]
-                        }
-                    ],
-                    pricingGuide: [
-                        {
-                            property: 'Mid-Terrace',
-                            description: 'Typical 2-3 bed, single elevation',
-                            priceRange: '£3,500 – £5,000',
-                            details: [
-                                'Rapid single-coat application',
-                                'Ideal for new builds & renovations',
-                                'Standard scaffolding included'
-                            ]
-                        },
-                        {
-                            property: '3 Bed Semi',
-                            description: 'Typical 3 elevation, gable end',
-                            priceRange: '£5,000 – £7,500',
-                            details: [
-                                'Covers three main elevations',
-                                'Price varies with gable size',
-                                'Faster completion than multi-coat'
-                            ]
-                        },
-                        {
-                            property: 'Detached Property',
-                            description: 'Typical all 4 elevations',
-                            priceRange: '£7,500 – £11,000+',
-                            details: [
-                                'Comprehensive single-coat system',
-                                'All elevations covered',
-                                'Rapid project completion'
-                            ]
-                        }
-                    ],
-                    systemBreakdown: [
-                        {
-                            layer: 'Substrate Preparation',
-                            description: 'Thorough cleaning, crack repair, and surface preparation. Substrate moisture checked to ensure optimal application conditions.'
-                        },
-                        {
-                            layer: 'Primer Application',
-                            description: 'Professional primer applied to ensure optimal adhesion and performance on varied substrate types (brick, concrete, blockwork).'
-                        },
-                        {
-                            layer: 'Single Monocouche Coat',
-                            description: '12-15mm engineered monocouche render applied in one application. Combines base coat strength with finish aesthetics. Texture and color applied simultaneously.'
-                        },
-                        {
-                            layer: 'Integrated Color System',
-                            description: 'Color mixed throughout the render material (not painted on). Ensures consistency, fade resistance, and durability for 20-25 years.'
-                        },
-                        {
-                            layer: 'Stone-Like Texture',
-                            description: 'Application creates natural stone-like appearance with authentic texture. Various finishes available (smooth, light, medium, heavy textures).'
-                        },
-                        {
-                            layer: 'Full Cure Period',
-                            description: '7-14 days full cure depending on weather conditions and substrate type. Building achieves maximum durability and weather protection post-cure.'
-                        }
                     ]
                 },
                 'ewi': {
-                    heroImage: 'images/hero/IMG_3979.jpeg',
+                    heroImage: 'images/hero/ewi%20hero.jpeg',
                     title: 'External Wall Insulation (EWI) Systems',
                     shortTitle: 'EWI Systems',
                     subtitle: 'Energy Efficiency & Thermal Insulation - Transform your building\'s thermal performance and aesthetics with professional EWI systems',
@@ -1900,129 +1688,6 @@
                         {
                             q: 'What maintenance does EWI require?',
                             a: 'Minimal maintenance required. Annual visual inspections, cleaning gutters/downpipes every 2-3 years, and occasional gentle cleaning of the render (soft brush, low-pressure below 60 bar) keeps your system performing optimally for decades.'
-                        }
-                    ],
-                    systemComparison: [
-                        {
-                            name: 'EPS (Expanded Polystyrene)',
-                            badge: '💰 Cost-Effective',
-                            featured: true,
-                            description: 'Most popular and cost-effective EWI option with excellent thermal performance.',
-                            pros: [
-                                'Most cost-effective solution',
-                                'Thermal conductivity: 0.040 W/mK',
-                                'Lightweight and easy to install',
-                                'Excellent compressive strength',
-                                'Good moisture resistance',
-                                'Proven 25+ year durability'
-                            ],
-                            cons: [
-                                'Slightly lower thermal efficiency than PUR',
-                                'Thicker board required for best U-values',
-                                'Standard fire rating (B-s2,d0)'
-                            ]
-                        },
-                        {
-                            name: 'PUR (Polyurethane)',
-                            badge: '⭐ Premium Performance',
-                            description: 'Premium EWI system with superior thermal efficiency and best-in-class performance.',
-                            pros: [
-                                'Best thermal performance available',
-                                'Thermal conductivity: 0.023-0.025 W/mK',
-                                'Thinner boards achieve same U-values',
-                                'Rigid and dimensionally stable',
-                                'Excellent long-term performance',
-                                'Superior fire resistance (A1 rated)'
-                            ],
-                            cons: [
-                                'Higher upfront cost than EPS',
-                                'Premium pricing (£70-90/m²)',
-                                'Requires specialist installers'
-                            ]
-                        },
-                        {
-                            name: 'Mineral Wool',
-                            badge: '🏛️ Historic Buildings',
-                            description: 'Natural fiber option ideal for listed and historic properties with superior fire rating.',
-                            pros: [
-                                'Excellent fire rating (A1)',
-                                'High breathability for historic properties',
-                                'Good acoustic properties',
-                                'Ideal for listed buildings',
-                                'Natural material option',
-                                'Thermal conductivity: 0.035-0.045 W/mK'
-                            ],
-                            cons: [
-                                'Slightly lower thermal efficiency than PUR',
-                                'Higher cost than EPS',
-                                'Moisture sensitivity requires careful handling',
-                                'Specialized installation needed'
-                            ]
-                        }
-                    ],
-                    pricingGuide: [
-                        {
-                            property: 'Semi-Detached Home',
-                            description: '2-3 bed, typical thermal specification',
-                            priceRange: '£8,000 – £12,000',
-                            details: [
-                                'EPS system with 100mm insulation',
-                                'Includes survey, scaffolding, installation, render finish',
-                                'Typical 25-30% energy savings',
-                                'Grant eligibility support included'
-                            ]
-                        },
-                        {
-                            property: 'Detached Property',
-                            description: 'Larger build, full perimeter coverage',
-                            priceRange: '£14,000 – £22,000',
-                            details: [
-                                'EPS or PUR system options available',
-                                'All four elevations covered',
-                                'Professional Project management',
-                                'Government grant applications assisted'
-                            ]
-                        },
-                        {
-                            property: 'Apartment Block / Large Commercial',
-                            description: 'Multi-unit or commercial building',
-                            priceRange: '£25,000 – £80,000+',
-                            details: [
-                                'Premium material selection (EPS/PUR)',
-                                'Large-scale scaffolding and logistics',
-                                'Comprehensive thermal modeling',
-                                'Significant energy cost reductions for all units'
-                            ]
-                        }
-                    ],
-                    systemBreakdown: [
-                        {
-                            layer: 'Survey & Design',
-                            description: 'Detailed building assessment to identify thermal requirements, structural considerations, and optimal system specification. Thermal modeling ensures U-value targets are achieved for energy efficiency goals.'
-                        },
-                        {
-                            layer: 'Surface Preparation & Scaffolding',
-                            description: 'Professional scaffold installation for safe access. Exterior surfaces cleaned and prepared. Any defects repaired. Damp-proof course checked and protected during installation.'
-                        },
-                        {
-                            layer: 'Insulation Board Installation',
-                            description: 'EPS, PUR, or Mineral Wool boards mechanically fixed and adhesive-bonded to external walls. Boards carefully aligned, tightly butted, and level. Vertical and horizontal alignment checked throughout.'
-                        },
-                        {
-                            layer: 'Joint Sealing & Profiles',
-                            description: 'All board joints, corners, and penetrations sealed to eliminate thermal bridges. Corner profiles, base details, and window/door reveals professionally finished to specification.'
-                        },
-                        {
-                            layer: 'Reinforced Base Coat',
-                            description: 'Applied over entire insulation layer with embedded alkali-resistant mesh for durability and crack prevention. Creates foundation for finish coat with excellent adhesion properties.'
-                        },
-                        {
-                            layer: 'Finish Render Application',
-                            description: 'Silicone render, monocouche, or acrylic finish applied in chosen color and texture. Provides weather protection, UV resistance, and aesthetics. Various finish options available (smooth, textured, stone-effect).'
-                        },
-                        {
-                            layer: 'Quality Verification & Certification',
-                            description: 'Comprehensive quality checks on all work. Thermal imaging confirms no thermal bridges. Full certification and warranty documentation provided. System ready for immediate occupancy.'
                         }
                     ]
                 },
@@ -2162,132 +1827,10 @@
                             q: 'How much does internal plastering cost?',
                             a: 'Costs vary based on the scope of work and surface condition. New build base coats typically cost £12-18/m², finish coats £5-10/m². Renovation work depends on the extent of remedial work required. Specialist finishes and complex projects may cost more. We provide detailed quotes after site assessment.'
                         }
-                    ],
-                    systemComparison: [
-                        {
-                            name: 'Traditional Wet Plastering',
-                            badge: '✨ Quality Finish',
-                            featured: true,
-                            description: 'Time-honored wet plastering technique with superior finish options and complete flexibility.',
-                            pros: [
-                                'Exceptional surface quality and flatness',
-                                'Multiple finish options (smooth, textured, polished)',
-                                'Versatile - works on any substrate',
-                                'Superior soundproofing properties',
-                                'Long-lasting durability (30+ years)',
-                                'Can achieve complex finishes and effects'
-                            ],
-                            cons: [
-                                'Longer installation time (base + finish coats)',
-                                'Requires experienced craftspeople',
-                                'Must cure 7-14 days before decoration',
-                                'Dust and cleanup required during application',
-                                'Weather-dependent curing process'
-                            ]
-                        },
-                        {
-                            name: 'Dry Lining / Plasterboard',
-                            description: 'Fast installation alternative using plasterboard sheets with taped and jointed finish.',
-                            pros: [
-                                'Rapid installation and completion',
-                                'Cleaner application process',
-                                'Cost-effective for some applications',
-                                'Good thermal properties with insulation',
-                                'Fire-rated options available',
-                                'Ready for decoration sooner'
-                            ],
-                            cons: [
-                                'Less aesthetic flexibility',
-                                'Visible joints require taped finishing',
-                                'Lower acoustic performance than plaster',
-                                'Shorter lifespan (15-20 years)',
-                                'Cannot achieve plaster finishes',
-                                'Higher moisture sensitivity'
-                            ]
-                        },
-                        {
-                            name: 'Hybrid Approach',
-                            description: 'Combination of dry lining base with plaster skim for optimal results.',
-                            pros: [
-                                'Speed of dry lining with plaster quality',
-                                'Excellent thermal and acoustic properties',
-                                'Cost-effective superior finish',
-                                'Best of both systems combined',
-                                'Flexible finish options',
-                                'Combines durability with speed'
-                            ],
-                            cons: [
-                                'More complex installation',
-                                'Requires skilled coordination',
-                                'Moderate cost (between pure plaster and dry lining)',
-                                'Still requires proper curing for skim coat'
-                            ]
-                        }
-                    ],
-                    pricingGuide: [
-                        {
-                            property: '2-3 Bed Terrace House',
-                            description: '70-90m² internal area',
-                            priceRange: '£1,500 – £2,500',
-                            details: [
-                                'New build base coat application',
-                                'Finish coat with smooth trowel',
-                                'All walls and ceilings',
-                                'Ready for decoration'
-                            ]
-                        },
-                        {
-                            property: '3-4 Bed Semi/Detached',
-                            description: '110-150m² internal area',
-                            priceRange: '£2,500 – £4,500',
-                            details: [
-                                'Complete internal plasterwork',
-                                'Multiple room finishes',
-                                'Ceiling and wall work',
-                                'Professional finishing throughout'
-                            ]
-                        },
-                        {
-                            property: 'Renovation / Complex Project',
-                            description: 'Includes repairs, remedial work, specialist finishes',
-                            priceRange: '£3,000 – £8,000+',
-                            details: [
-                                'Damage assessment and repair',
-                                'Specialist finish options',
-                                'Custom decorative effects',
-                                'Extended timeline for complex work'
-                            ]
-                        }
-                    ],
-                    systemBreakdown: [
-                        {
-                            layer: 'Surface Assessment & Preparation',
-                            description: 'Detailed inspection of all substrates. Identification of issues, damage, and structural defects. Protection of floors and furniture. Removal of old materials if required. Surface cleaned and prepared.'
-                        },
-                        {
-                            layer: 'Base Coat Application',
-                            description: '12-15mm base coat applied to sound substrate. Coat thickness varies based on substrate type (block, brick, concrete). Multiple passes ensure complete coverage and proper suction control. Coat fully scratched for mechanical key.'
-                        },
-                        {
-                            layer: 'Drying & Curing Period',
-                            description: 'Base coat allowed to fully cure - typically 7-14 days depending on plaster type, substrate, and environmental conditions. Proper curing essential for durability and finish quality. Environmental conditions managed as needed.'
-                        },
-                        {
-                            layer: 'Finish Coat Application',
-                            description: '2-3mm finish coat applied over cured base coat. Professional troweling creates perfectly smooth, level surface. Multiple passes ensure uniform finish, flatness, and aesthetic quality. Ready for immediate decoration.'
-                        },
-                        {
-                            layer: 'Quality Flatness & Finish',
-                            description: 'Final surface achieves ±3mm flatness specification. Superior smoothness from professional troweling. All deviations addressed. Surface prepared for paint, wallpaper, or any finish application without additional preparation.'
-                        },
-                        {
-                            layer: 'Defect Rectification & Inspection',
-                            description: 'Comprehensive final inspection of all surfaces. Any minor remedial work completed. Defect lists addressed. Final cleanup and protection removal. Handover with detailed care instructions.'
-                        }
                     ]
                 },
                 'drylining': {
-                    heroImage: 'images/case-studies/drylining-service.jpeg',
+                    heroImage: 'images/hero/drylining-service.jpg',
                     title: 'Expert Dry Lining & Boarding Solutions',
                     shortTitle: 'Dry Lining & Boarding',
                     subtitle: 'Structural & Thermal Excellence',
@@ -2300,166 +1843,6 @@
                         'Enhance thermal efficiency with insulated boarding',
                         'Perfect for new partitions, ceilings, and stud walls',
                         'Structural integrity and precision guaranteed'
-                    ],
-                    technicalSpecs: [
-                        { label: 'Plasterboard Types', value: 'Standard/Fire-Rated/Acoustic' },
-                        { label: 'Thickness', value: '12.5-15mm' },
-                        { label: 'Installation Methods', value: 'Dot & Dab / Tacking / Stud' },
-                        { label: 'Taped & Jointed', value: 'Smooth ready-for-decoration finish' },
-                        { label: 'Fire Rating', value: 'Up to 60 minutes' },
-                        { label: 'Acoustic Performance', value: 'Enhanced with acoustic boards' }
-                    ],
-                    systemComparison: [
-                        {
-                            name: 'Dot & Dab (Bonding)',
-                            badge: '⚡ Fast Installation',
-                            featured: true,
-                            description: 'Direct bonding of plasterboard to solid masonry walls using specialized adhesive dots.',
-                            pros: [
-                                'Rapid installation on solid walls',
-                                'No stud framework required',
-                                'Minimal space loss from walls',
-                                'Cost-effective solution',
-                                'Suitable for most masonry substrates',
-                                'Ready for taped/jointed finish'
-                            ],
-                            cons: [
-                                'Requires sound masonry substrate',
-                                'Cannot hide services easily',
-                                'Limited thermal improvement',
-                                'Regular finishes only'
-                            ]
-                        },
-                        {
-                            name: 'Metal / Timber Stud Framing',
-                            badge: '🔧 Versatile Solution',
-                            description: 'Plasterboard fixed to timber or metal stud frames for partition walls and ceilings.',
-                            pros: [
-                                'Complete design flexibility',
-                                'Can hide services and pipework',
-                                'Excellent for odd-shaped spaces',
-                                'Sound insulation options',
-                                'Thermal performance improves with insulation',
-                                'Professional finish achievable'
-                            ],
-                            cons: [
-                                'Takes more installation time',
-                                'Reduces room space (75-100mm)',
-                                'More complex construction',
-                                'Higher labor costs than Dot & Dab',
-                                'Requires skilled installation'
-                            ]
-                        },
-                        {
-                            name: 'Insulated Plasterboard',
-                            badge: '🌡️ Thermal Upgrade',
-                            description: 'Specialist boards with integrated insulation layer for improved thermal performance.',
-                            pros: [
-                                'Thermal insulation integrated',
-                                'Single-step thermal upgrade',
-                                'Reduces heating costs',
-                                'Condensation prevention',
-                                'Faster than separate insulation',
-                                'Improved comfort'
-                            ],
-                            cons: [
-                                'Higher cost than standard boards',
-                                'Less design flexibility',
-                                'Service concealment limited',
-                                'Installation care required'
-                            ]
-                        }
-                    ],
-                    pricingGuide: [
-                        {
-                            property: 'Single Room (Dot & Dab)',
-                            description: 'Small bedroom or single wall area',
-                            priceRange: '£400 – £800',
-                            details: [
-                                'Surface preparation',
-                                'Adhesive bonding application',
-                                'Taped and jointed finish',
-                                'Paint-ready surface'
-                            ]
-                        },
-                        {
-                            property: 'Full Room with Stud Frame',
-                            description: 'Partition walls, ceilings, or mixed',
-                            priceRange: '£1,500 – £3,000',
-                            details: [
-                                'Stud framework installation',
-                                'Complete board coverage',
-                                'Taped and jointed finish',
-                                'Professional finishing throughout'
-                            ]
-                        },
-                        {
-                            property: 'Whole Property / Complex',
-                            description: 'Multiple rooms, mixed systems, extensions',
-                            priceRange: '£3,500 – £8,000+',
-                            details: [
-                                'Mixed installation methods',
-                                'Comprehensive coverage',
-                                'Fire-rated or specialist boards',
-                                'Thermal upgrades included'
-                            ]
-                        }
-                    ],
-                    systemBreakdown: [
-                        {
-                            layer: 'Assessment & Material Selection',
-                            description: 'Site survey to determine best installation method. Selection of appropriate plasterboard type (standard, fire-rated, acoustic, insulated). Material specification based on requirements and building codes.'
-                        },
-                        {
-                            layer: 'Surface Preparation / Frame Installation',
-                            description: 'For Dot & Dab: clean and prepare masonry surface. For Stud: install timber or metal stud framework, ensuring level and plumb. Coordinate services (electrical, plumbing) placement before boarding.'
-                        },
-                        {
-                            layer: 'Plasterboard Fixing',
-                            description: 'Adhesive bonding (Dot & Dab) or mechanical fixing with screws (stud systems). Boards positioned and checked for alignment. Joints staggered and gaps minimized. All edges properly supported.'
-                        },
-                        {
-                            layer: 'Joint Preparation',
-                            description: 'Joint tape embedded in filler compound. First pass of joint filler applied to all board joints. Tape positioned centrally and smoothed. Perimeter edges and internal angles treated.'
-                        },
-                        {
-                            layer: 'Multi-Coat Jointing',
-                            description: 'Second and third coats of joint filler applied with progressive wider trowels (150mm, 300mm, 400mm+). Each coat sanded between applications. Professional technique creates seamless joints.'
-                        },
-                        {
-                            layer: 'Final Finishing & Sanding',
-                            description: 'Final sanding creates smooth, paint-ready surface. All joint lines feathered invisibly into board face. Surface dust removed. Ready for immediate decoration with paint or wallpaper.'
-                        }
-                    ],
-                    idealApplications: [
-                        { title: 'Partition Walls', description: 'Create rooms from large spaces. Excellent for home offices, nurseries, and flexible living areas.' },
-                        { title: 'Ceiling Installation', description: 'Suspended or direct-fixed ceilings. Hides services, improves acoustics, and enhances finishes.' },
-                        { title: 'Thermal Upgrade', description: 'Insulated boarding improves energy efficiency and comfort while hiding insulation.' },
-                        { title: 'Fire Resistance', description: 'Fire-rated boards provide protection for stairwells, kitchens, and commercial spaces.' },
-                        { title: 'Acoustic Improvement', description: 'Acoustic boards reduce noise transmission - ideal for home studios and theaters.' },
-                        { title: 'New Builds', description: 'Complete internal boarding of new residential and commercial construction.' }
-                    ],
-                    faqItems: [
-                        {
-                            q: 'What\'s the difference between Dot & Dab and stud framing?',
-                            a: 'Dot & Dab directly bonds boards to masonry using adhesive - fast, cost-effective, minimal space loss. Stud framing creates a framework - more flexible, allows service concealment, better thermal/acoustic options, but requires more installation time and takes more space.'
-                        },
-                        {
-                            q: 'How long does dry lining installation take?',
-                            a: 'Dot & Dab: 1-3 days for typical room. Stud systems: 3-7 days depending on complexity. Taped & jointing adds 3-5 days. Sanding adds 1-2 days. Total typically 2-4 weeks for whole property.'
-                        },
-                        {
-                            q: 'Can dry lining improve energy efficiency?',
-                            a: 'Yes! Insulated plasterboard or stud framing with insulation significantly improves thermal performance. Can reduce heating costs 15-25%. Creates thermal break on cold walls, prevents condensation, and improves comfort.'
-                        },
-                        {
-                            q: 'Is taped & jointing essential?',
-                            a: 'Yes, professional taped and jointed finish is essential for a seamless, paint-ready surface. Invisible joint lines and professional finish are standard for quality work. DIY taping rarely achieves professional results.'
-                        },
-                        {
-                            q: 'How soon can I paint after dry lining?',
-                            a: 'After final sanding, typically within 1-2 days. Ensure all dust is removed and surfaces fully cured. Apply primer before final paint for best results.'
-                        }
                     ]
                 },
                 'gallery': {
@@ -2902,6 +2285,27 @@
                         </section>
                     )}
 
+                    {/* Ideal Applications Section */}
+                    {service.idealApplications && (
+                        <section className="py-20 bg-white">
+                            <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Suited For</span>
+                                <h2 className="animate-on-scroll stagger-1 font-display text-3xl font-bold text-charcoal-900 leading-tight tracking-tight mb-12">
+                                    Ideal Applications
+                                </h2>
+
+                                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                    {service.idealApplications.map((app, i) => (
+                                        <div key={i} className={`animate-on-scroll stagger-${Math.min(i + 1, 6)} premium-hover rounded-xl p-8 bg-slate-50 border-2 border-slate-200`}>
+                                            <h3 className="font-display text-lg font-bold text-charcoal-900 mb-3 tracking-tight">{app.title}</h3>
+                                            <p className="font-body text-slate-700 leading-relaxed font-light text-sm">{app.description}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+                    )}
+
                     {/* Plastering Services Section */}
                     {service.plasteringServices && (
                         <section className="py-20 bg-white">
@@ -2999,89 +2403,6 @@
                                         <div key={i} className={`animate-on-scroll stagger-${Math.min(i + 1, 6)} premium-hover rounded-xl p-8 bg-white border-2 border-slate-200`}>
                                             <h3 className="font-display text-lg font-bold text-charcoal-900 mb-3 tracking-tight">{app.title}</h3>
                                             <p className="font-body text-slate-700 leading-relaxed font-light text-sm">{app.description}</p>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </section>
-                    )}
-
-                    {/* System Comparison - Silicone Specific */}
-                    {service.systemComparison && (
-                        <section className="py-20 bg-white">
-                            <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">System Comparison</span>
-                                <h2 className="animate-on-scroll stagger-1 font-display text-3xl font-bold text-charcoal-900 leading-tight tracking-tight mb-12">
-                                    Which Render Is Right For Your Property?
-                                </h2>
-                                <div className="grid md:grid-cols-3 gap-8">
-                                    {service.systemComparison.map((system, i) => (
-                                        <div key={i} className={`animate-on-scroll stagger-${Math.min(i + 1, 3)} rounded-xl p-8 border-2 transition-all duration-300 ${system.featured ? 'border-lime-400 bg-gradient-to-br from-lime-400/5 to-white' : 'border-slate-200 bg-white'} hover:shadow-lg`}>
-                                            {system.badge && <span className="inline-block bg-lime-400 text-charcoal-900 px-3 py-1 rounded text-xs font-bold mb-4">{system.badge}</span>}
-                                            <h3 className="font-display text-xl font-bold text-charcoal-900 mb-2">{system.name}</h3>
-                                            <p className="text-sm text-slate-600 mb-6 font-light">{system.description}</p>
-                                            <div className="mb-6">
-                                                <h4 className="text-xs font-bold text-green-600 uppercase mb-3">Pros</h4>
-                                                <ul className="space-y-2 text-sm font-light text-slate-700">
-                                                    {system.pros.map((pro, j) => <li key={j}>✓ {pro}</li>)}
-                                                </ul>
-                                            </div>
-                                            <div>
-                                                <h4 className="text-xs font-bold text-red-600 uppercase mb-3">Cons</h4>
-                                                <ul className="space-y-2 text-sm font-light text-slate-700">
-                                                    {system.cons.map((con, j) => <li key={j}>✗ {con}</li>)}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </section>
-                    )}
-
-                    {/* Pricing Guide - Silicone Specific */}
-                    {service.pricingGuide && (
-                        <section className="py-20 bg-slate-50">
-                            <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Transparent Pricing</span>
-                                <h2 className="animate-on-scroll stagger-1 font-display text-3xl font-bold text-charcoal-900 leading-tight tracking-tight mb-4">
-                                    Estimated Project Costs by Property Type
-                                </h2>
-                                <p className="animate-on-scroll stagger-2 text-slate-600 font-light mb-12">
-                                    All prices are based on standard scaffolding and a full professional system. Final quotes depend on property size, condition, and selected options.
-                                </p>
-                                <div className="grid md:grid-cols-3 gap-8">
-                                    {service.pricingGuide.map((pricing, i) => (
-                                        <div key={i} className={`animate-on-scroll stagger-${Math.min(i + 1, 3)} rounded-xl p-8 bg-white border-2 border-slate-200 hover:border-lime-400 transition-all`}>
-                                            <h3 className="font-display text-lg font-bold text-charcoal-900 mb-2">{pricing.property}</h3>
-                                            <p className="text-xs text-slate-600 mb-4 font-light">{pricing.description}</p>
-                                            <div className="text-2xl font-bold text-lime-400 mb-6">{pricing.priceRange}</div>
-                                            <ul className="space-y-3 text-sm font-light text-slate-700">
-                                                {pricing.details.map((detail, j) => <li key={j} className="flex gap-2"><span>•</span><span>{detail}</span></li>)}
-                                            </ul>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </section>
-                    )}
-
-                    {/* System Breakdown - Silicone Specific */}
-                    {service.systemBreakdown && (
-                        <section className="py-20 bg-white">
-                            <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">How It Works</span>
-                                <h2 className="animate-on-scroll stagger-1 font-display text-3xl font-bold text-charcoal-900 leading-tight tracking-tight mb-4">
-                                    System Breakdown
-                                </h2>
-                                <p className="animate-on-scroll stagger-2 text-slate-600 font-light mb-12">
-                                    Professional {service.shortTitle} is a multi-layer system engineered for strength, flexibility, and longevity.
-                                </p>
-                                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                    {service.systemBreakdown.map((layer, i) => (
-                                        <div key={i} className={`animate-on-scroll stagger-${Math.min(i + 1, 6)} rounded-lg p-6 bg-gradient-to-br from-slate-50 to-white border-l-4 border-lime-400`}>
-                                            <h4 className="font-display font-bold text-charcoal-900 mb-3">{i + 1}. {layer.layer}</h4>
-                                            <p className="text-sm text-slate-700 leading-relaxed font-light">{layer.description}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -3233,12 +2554,13 @@
                         <div className="max-w-7xl mx-auto px-6 lg:px-12">
                             <div className="grid lg:grid-cols-2 gap-16 items-center">
                                 <div className="animate-on-scroll-left">
-                                    <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-lime-400 hover:shadow-3xl transition-all duration-500">
-                                        <img
-                                            src="./images/case-studies/IMG_4912.jpeg"
-                                            alt="Professional plaster and rendering project showcase"
-                                            className="w-full h-auto object-cover"
-                                        />
+                                    <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-charcoal-900 border-2 border-lime-400">
+                                        <div className="absolute inset-0 flex items-center justify-center">
+                                            <div className="text-center">
+                                                <LogoP className="w-24 h-24 mx-auto mb-4 opacity-30" />
+                                                <p className="text-lime-400 font-display text-lg font-bold">Your Project Here</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div>

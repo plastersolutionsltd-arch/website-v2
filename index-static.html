@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plaster & Rendering Solutions | Sheffield | Premium Rendering & Plastering</title>
+    <meta name="description" content="Professional silicone rendering, monocouche, EWI systems, and internal plastering in Sheffield. 25-year manufacturer warranty & 5-year workmanship guarantee." />
+    <meta name="keywords" content="rendering Sheffield, plastering Sheffield, silicone render, EWI Sheffield, monocouche render, dry lining Sheffield, internal plastering" />
+    <meta name="author" content="Plaster and Rendering Solutions Limited" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-lime-400: #00FF00;
+            --color-lime-500: #00E600;
+            --color-charcoal-700: #3d3d3d;
+            --color-charcoal-800: #2d2d2d;
+            --color-charcoal-900: #1a1a1a;
+            --color-slate-50: #f8fafc;
+            --color-slate-100: #f1f5f9;
+            --color-slate-700: #334155;
+            --color-slate-800: #1e293b;
+            --color-gold: #C9A961;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-charcoal-900);
+            line-height: 1.6;
+            background-color: #ffffff;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background-color: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-lime-400);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-charcoal-900);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-lime-400);
+        }
+
+        .cta-btn {
+            background-color: var(--color-lime-400);
+            color: var(--color-charcoal-900);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--color-lime-500);
+            box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--color-charcoal-900) 0%, var(--color-charcoal-800) 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #e0e0e0;
+            font-weight: 300;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background-color: var(--color-lime-400);
+            color: var(--color-charcoal-900);
+            padding: 1rem 2.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .hero-cta:hover {
+            background-color: var(--color-lime-500);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0, 255, 0, 0.3);
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about {
+            padding: 5rem 2rem;
+            background-color: var(--color-slate-50);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--color-lime-400);
+            transition: all 0.5s ease;
+        }
+
+        .about-image:hover {
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .about-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: var(--color-lime-400);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .about-content p {
+            font-size: 1rem;
+            color: var(--color-slate-700);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .divider-line {
+            height: 2px;
+            background-color: var(--color-lime-400);
+            margin-bottom: 2rem;
+            width: 50px;
+        }
+
+        .btn-explore {
+            background-color: var(--color-lime-400);
+            color: var(--color-charcoal-900);
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            display: inline-block;
+        }
+
+        .btn-explore:hover {
+            background-color: var(--color-lime-500);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
+        }
+
+        /* ===== SERVICES SECTION ===== */
+        .services {
+            padding: 5rem 2rem;
+            background-color: #ffffff;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title .label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: var(--color-lime-400);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, rgba(0, 255, 0, 0.05) 0%, rgba(0, 255, 0, 0.02) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 0, 0.1);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 20px 40px rgba(0, 255, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(135deg, var(--color-lime-400) 0%, var(--color-lime-500) 100%);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-charcoal-900);
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.2);
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: var(--color-slate-700);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* ===== FAQ SECTION ===== */
+        .faq {
+            padding: 5rem 2rem;
+            background-color: var(--color-slate-50);
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-header {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            transition: background 0.3s ease;
+        }
+
+        .faq-header:hover {
+            background-color: #f8fafc;
+        }
+
+        .faq-title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--color-charcoal-900);
+        }
+
+        .faq-toggle {
+            color: var(--color-lime-400);
+            font-weight: 700;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background-color: #f8fafc;
+        }
+
+        .faq-item.active .faq-content {
+            max-height: 300px;
+        }
+
+        .faq-content p {
+            padding: 1.5rem;
+            color: var(--color-slate-700);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ===== TESTIMONIALS SECTION ===== */
+        .testimonials {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, var(--color-slate-50) 0%, white 100%);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stars {
+            color: var(--color-gold);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-text {
+            color: var(--color-slate-700);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--color-charcoal-900);
+            font-size: 0.95rem;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            padding: 5rem 2rem;
+            background-color: var(--color-slate-50);
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--color-charcoal-900);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-lime-400);
+            box-shadow: 0 0 0 3px rgba(0, 255, 0, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--color-lime-400);
+            color: var(--color-charcoal-900);
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--color-lime-500);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--color-charcoal-900);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .footer-content a {
+            color: var(--color-lime-400);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-content a:hover {
+            color: var(--color-lime-500);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== NAVIGATION ===== -->
+    <nav>
+        <a href="#" class="logo">P PARS</a>
+        <ul class="nav-links">
+            <li><a href="#home" onclick="scrollToSection('home')">Home</a></li>
+            <li><a href="#services" onclick="scrollToSection('services')">Services</a></li>
+            <li><a href="#about" onclick="scrollToSection('about')">About</a></li>
+            <li><a href="#faq" onclick="scrollToSection('faq')">FAQ</a></li>
+            <li><a href="#contact" onclick="scrollToSection('contact')">Contact</a></li>
+            <li><button class="cta-btn" onclick="scrollToSection('contact')">Get Quote</button></li>
+        </ul>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section id="home" class="hero">
+        <div class="hero-content animate-in">
+            <h1>Excellence in Every Finish</h1>
+            <p>Premium plastering and rendering solutions in Sheffield with 25-year warranty</p>
+            <a href="#contact" class="hero-cta" onclick="scrollToSection('contact')">Get Your Free Quote</a>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="about">
+        <div class="section-container">
+            <div class="about-grid">
+                <div class="about-image animate-in">
+                    <img src="./assets/images/about-us-transformation.png" alt="Professional before and after plaster and rendering transformation" />
+                </div>
+                <div class="animate-in">
+                    <span class="about-label">About Us</span>
+                    <h2>Excellence in every finish</h2>
+                    <p>At Plaster and Rendering Solutions Limited, we are committed to excellence in every plastering and rendering job. Backed by a warranty on all our services, we ensure that your investment is protected and your home or business looks stunning.</p>
+                    <p>Our skilled professionals utilize the best materials and techniques to deliver results that exceed expectations. From modern extensions in Grenoside to traditional detached homes in Dore, we serve Sheffield with unwavering commitment to quality and craftsmanship.</p>
+                    <div class="divider-line"></div>
+                    <button class="btn-explore" onclick="scrollToSection('services')">Explore Our Work</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section id="services" class="services">
+        <div class="section-container">
+            <div class="section-title">
+                <span class="label">What We Offer</span>
+                <h2>Professional Rendering & Plastering</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card animate-in">
+                    <div class="service-icon">01</div>
+                    <h3>Silicone Rendering</h3>
+                    <p>Premium silicone-based render with superior weather resistance and durability. Perfect for modern and traditional properties.</p>
+                </div>
+                <div class="service-card animate-in">
+                    <div class="service-icon">02</div>
+                    <h3>Monocouche Rendering</h3>
+                    <p>Single-coat rendering system that provides excellent adhesion and durability with minimal maintenance requirements.</p>
+                </div>
+                <div class="service-card animate-in">
+                    <div class="service-icon">03</div>
+                    <h3>EWI Systems</h3>
+                    <p>External Wall Insulation systems that improve energy efficiency while enhancing your property's aesthetic appeal.</p>
+                </div>
+                <div class="service-card animate-in">
+                    <div class="service-icon">04</div>
+                    <h3>Internal Plastering</h3>
+                    <p>Professional internal finishing including skimming, dry lining, and bespoke plastering solutions for any space.</p>
+                </div>
+                <div class="service-card animate-in">
+                    <div class="service-icon">05</div>
+                    <h3>Dry Lining</h3>
+                    <p>Expert dry lining installation for interior walls, ceilings, and thermal improvements in residential and commercial properties.</p>
+                </div>
+                <div class="service-card animate-in">
+                    <div class="service-icon">06</div>
+                    <h3>Decorative Finishes</h3>
+                    <p>Bespoke decorative rendering finishes including textured, patterned, and specialty coatings for unique designs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section id="faq" class="faq">
+        <div class="faq-container">
+            <div class="section-title">
+                <span class="label">FAQ</span>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-header" onclick="toggleFAQ(this)">
+                        <span class="faq-title">What is the warranty on your services?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-content">
+                        <p>We offer a comprehensive 25-year manufacturer warranty on materials and a 5-year workmanship guarantee on all our services. This protects your investment and gives you complete peace of mind.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header" onclick="toggleFAQ(this)">
+                        <span class="faq-title">How long does a rendering project typically take?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-content">
+                        <p>Project timelines vary depending on the scope and size. A typical house might take 2-4 weeks. Weather conditions may affect scheduling. We'll provide a detailed timeline during your consultation.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header" onclick="toggleFAQ(this)">
+                        <span class="faq-title">Do you offer free consultations?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-content">
+                        <p>Yes! We provide free site assessments and consultations. Our team will evaluate your property, discuss your needs, and provide a detailed quote with no obligation.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header" onclick="toggleFAQ(this)">
+                        <span class="faq-title">What areas do you serve?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-content">
+                        <p>We serve Sheffield and surrounding areas in South Yorkshire. Our team operates throughout the region covering properties from Dore to Grenoside and everywhere in between.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header" onclick="toggleFAQ(this)">
+                        <span class="faq-title">Are your materials environmentally friendly?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-content">
+                        <p>We use high-quality, durable materials that are designed to last decades, reducing the need for frequent replacement. We're committed to sustainable practices in all our work.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-header" onclick="toggleFAQ(this)">
+                        <span class="faq-title">Can you work on period properties?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-content">
+                        <p>Absolutely! We have extensive experience with period properties and understand the specific requirements for listed buildings and heritage properties. We use appropriate materials and techniques for each property type.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="testimonials">
+        <div class="section-container">
+            <div class="section-title">
+                <span class="label">Testimonials</span>
+                <h2>What Our Clients Say</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card animate-in">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Excellent workmanship and professionalism. The team transformed our home completely. Highly recommend!"</p>
+                    <p class="testimonial-author">— Sarah Thompson, Sheffield</p>
+                </div>
+                <div class="testimonial-card animate-in">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Outstanding service from start to finish. The attention to detail was impressive. Will use again for sure!"</p>
+                    <p class="testimonial-author">— John Williams, Grenoside</p>
+                </div>
+                <div class="testimonial-card animate-in">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Professional, reliable, and fantastic value. The warranty gave us complete peace of mind. 5 stars!"</p>
+                    <p class="testimonial-author">— Emma Davies, Dore</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <div class="section-title">
+                <span class="label">Contact</span>
+                <h2>Get Your Free Quote</h2>
+            </div>
+            <form onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" required placeholder="Your name" />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" required placeholder="your@email.com" />
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="07595 399 525" />
+                </div>
+                <div class="form-group">
+                    <label for="service">Service Interested In *</label>
+                    <input type="text" id="service" required placeholder="e.g., Silicone Rendering" />
+                </div>
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" required placeholder="Tell us about your project..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Quote Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-content">
+            <h3 style="margin-bottom: 1.5rem; font-size: 1.25rem;">Plaster and Rendering Solutions</h3>
+            <p><strong>Phone:</strong> <a href="tel:07595399525">07595 399 525</a></p>
+            <p><strong>Email:</strong> <a href="mailto:plastersolutionsltd@gmail.com">plastersolutionsltd@gmail.com</a></p>
+            <p><strong>Address:</strong> 3 Rocher Close, Grenoside, Sheffield S35 8QP</p>
+            <p><strong>Hours:</strong> Monday-Sunday, 8am - 8pm</p>
+            <hr style="margin: 1.5rem 0; opacity: 0.2;" />
+            <p>&copy; 2026 Plaster and Rendering Solutions. All rights reserved.</p>
+            <p>Sheffield | South Yorkshire | BBA Approved | 25-Year Warranty</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll to section
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Toggle FAQ
+        function toggleFAQ(header) {
+            const faqItem = header.parentElement;
+            faqItem.classList.toggle('active');
+        }
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-in').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+
+        // Form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+
+            // Construct mailto link
+            const mailtoLink = `mailto:plastersolutionsltd@gmail.com?subject=Quote Request from ${encodeURIComponent(name)}&body=Name: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0APhone: ${encodeURIComponent(phone)}%0AService: ${encodeURIComponent(service)}%0A%0AMessage:%0A${encodeURIComponent(message)}`;
+
+            window.location.href = mailtoLink;
+
+            // Reset form
+            event.target.reset();
+        }
+
+        // Smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

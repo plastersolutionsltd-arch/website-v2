@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Silicone Rendering Sheffield | Expert Thin-Coat Specialists | Plaster & Rendering Solutions</title>
+    <meta name="description" content="Premium silicone rendering specialists in Sheffield. Self-cleaning hydrophobic surfaces, 25-year warranty, expert thin-coat systems. Transform your home today." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-lime-400: #00FF00;
+            --color-lime-500: #00E600;
+            --color-charcoal-900: #1a1a1a;
+            --color-slate-50: #f8fafc;
+            --color-slate-100: #f1f5f9;
+            --color-slate-700: #334155;
+            --color-gold: #C9A961;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-charcoal-900);
+            line-height: 1.6;
+            background-color: #ffffff;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background-color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-lime-400);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-charcoal-900);
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-lime-400);
+        }
+
+        .cta-btn {
+            background-color: var(--color-lime-400);
+            color: var(--color-charcoal-900);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--color-lime-500);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--color-charcoal-900) 0%, #2d2d2d 100%);
+            background-image: linear-gradient(135deg, rgba(26, 26, 26, 0.85) 0%, rgba(45, 45, 45, 0.85) 100%), url('./images/hero/silicone-service.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 2rem;
+            text-align: center;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #e0e0e0;
+            font-weight: 300;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background-color: var(--color-lime-400);
+            color: var(--color-charcoal-900);
+            padding: 1rem 2.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            margin: 0 0.5rem;
+        }
+
+        .hero-cta:hover {
+            background-color: var(--color-lime-500);
+            transform: translateY(-2px);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        section.alt {
+            background-color: var(--color-slate-50);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: var(--color-lime-400);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--color-slate-700);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Introduction Section */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .intro-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-content p {
+            font-size: 1rem;
+            color: var(--color-slate-700);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .intro-image {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--color-lime-400);
+        }
+
+        .intro-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            margin-bottom: 5rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table thead {
+            background: linear-gradient(135deg, var(--color-charcoal-900) 0%, #2d2d2d 100%);
+            color: white;
+        }
+
+        .comparison-table th {
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 700;
+            border-bottom: 2px solid var(--color-lime-400);
+        }
+
+        .comparison-table td {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tbody tr:hover {
+            background-color: var(--color-slate-50);
+        }
+
+        .comparison-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .feature-name {
+            font-weight: 600;
+            color: var(--color-charcoal-900);
+            width: 25%;
+        }
+
+        .pros {
+            color: #16a34a;
+            font-weight: 600;
+        }
+
+        .cons {
+            color: #dc2626;
+            font-weight: 600;
+        }
+
+        .neutral {
+            color: var(--color-slate-700);
+        }
+
+        /* Comparison Cards */
+        .comparison-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .comparison-card {
+            background: linear-gradient(135deg, var(--color-slate-50) 0%, white 100%);
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .comparison-card:hover {
+            border-color: var(--color-lime-400);
+            box-shadow: 0 15px 35px rgba(0, 255, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .comparison-card.featured {
+            border-color: var(--color-lime-400);
+            box-shadow: 0 15px 35px rgba(0, 255, 0, 0.2);
+            background: linear-gradient(135deg, rgba(0, 255, 0, 0.05) 0%, white 100%);
+        }
+
+        .featured-badge {
+            display: inline-block;
+            background-color: var(--color-lime-400);
+            color: var(--color-charcoal-900);
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            font-weight: 700;
+            font-size: 0.75rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .comparison-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-charcoal-900);
+        }
+
+        .comparison-card p {
+            color: var(--color-slate-700);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .pros-list, .cons-list {
+            margin-bottom: 1.5rem;
+        }
+
+        .pros-list h4, .cons-list h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pros-list h4 {
+            color: #16a34a;
+        }
+
+        .cons-list h4 {
+            color: #dc2626;
+        }
+
+        .pros-list ul, .cons-list ul {
+            list-style: none;
+            font-size: 0.9rem;
+        }
+
+        .pros-list li, .cons-list li {
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .pros-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #16a34a;
+            font-weight: 700;
+        }
+
+        .cons-list li:before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: #dc2626;
+            font-weight: 700;
+        }
+
+        /* Colours Section */
+        .colours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .colour-swatch {
+            text-align: center;
+        }
+
+        .colour-sample {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .colour-sample:hover {
+            border-color: var(--color-lime-400);
+            transform: scale(1.05);
+        }
+
+        .colour-name {
+            margin-top: 1rem;
+            font-weight: 600;
+            color: var(--color-charcoal-900);
+            font-size: 0.9rem;
+        }
+
+        /* Costing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--color-lime-400);
+            box-shadow: 0 15px 35px rgba(0, 255, 0, 0.1);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--color-charcoal-900);
+        }
+
+        .pricing-property {
+            font-size: 0.9rem;
+            color: var(--color-slate-700);
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-range {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-lime-400);
+            margin-bottom: 1rem;
+        }
+
+        .pricing-details {
+            font-size: 0.85rem;
+            color: var(--color-slate-700);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .pricing-cta {
+            display: block;
+            text-align: center;
+            background-color: var(--color-lime-400);
+            color: var(--color-charcoal-900);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .pricing-cta:hover {
+            background-color: var(--color-lime-500);
+            transform: translateY(-2px);
+        }
+
+        /* System Breakdown */
+        .system-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .system-layer {
+            background: linear-gradient(135deg, var(--color-slate-50) 0%, white 100%);
+            border-left: 4px solid var(--color-lime-400);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .system-layer h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--color-charcoal-900);
+        }
+
+        .system-layer p {
+            font-size: 0.9rem;
+            color: var(--color-slate-700);
+            line-height: 1.6;
+        }
+
+        /* Process Section */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--color-lime-400) 0%, var(--color-lime-500) 100%);
+            color: var(--color-charcoal-900);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 255, 0, 0.2);
+        }
+
+        .process-step h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .process-step p {
+            font-size: 0.9rem;
+            color: var(--color-slate-700);
+            line-height: 1.6;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: white;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .faq-header {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            transition: background 0.3s ease;
+        }
+
+        .faq-header:hover {
+            background-color: var(--color-slate-50);
+        }
+
+        .faq-title {
+            font-weight: 600;
+            color: var(--color-charcoal-900);
+        }
+
+        .faq-toggle {
+            color: var(--color-lime-400);
+            font-weight: 700;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background-color: var(--color-slate-50);
+        }
+
+        .faq-item.active .faq-content {
+            max-height: 400px;
+        }
+
+        .faq-content p {
+            padding: 1.5rem;
+            color: var(--color-slate-700);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-final {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--color-charcoal-900) 0%, #2d2d2d 100%);
+            color: white;
+            border-radius: 1rem;
+        }
+
+        .cta-final h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-final p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #e0e0e0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--color-charcoal-900);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content p {
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .footer-content a {
+            color: var(--color-lime-400);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                font-size: 0.85rem;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 1rem;
+            }
+
+            .colours-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">P PARS</a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><button class="cta-btn">Get Quote</button></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Silicone Rendering Specialists in Sheffield</h1>
+            <p>High-performance thin-coat systems with self-cleaning hydrophobic surfaces</p>
+            <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.9;">BBA-Approved | 25-Year Warranty | Expert Installation</p>
+            <a href="#contact" class="hero-cta">Free Site Survey</a>
+            <a href="#pricing" class="hero-cta" style="background-color: white; color: var(--color-charcoal-900);">View Pricing</a>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="container">
+        <h2 style="text-align: center; font-size: 2.2rem; margin-bottom: 3rem;">Why Choose Silicone Rendering?</h2>
+
+        <div class="intro-grid" style="margin-bottom: 3rem;">
+            <div class="intro-content">
+                <h3>The Gold Standard in Durability</h3>
+                <p>Silicone rendering represents the pinnacle of exterior finishing technology. Unlike traditional sand and cement renders that brittle and crack over time, silicone systems are engineered to move with your building—a crucial advantage in the UK's variable climate.</p>
+                <p><strong>The self-cleaning hydrophobic surface</strong> repels water and prevents algae growth, meaning your home maintains its pristine appearance year after year with minimal maintenance. It's not just a coating; it's a comprehensive protection system.</p>
+                <p style="margin-bottom: 0;">We specialize in applying BBA-approved systems with manufacturer guarantees of up to <strong>25 years</strong>, ensuring your investment is protected long-term.</p>
+            </div>
+            <div class="intro-image">
+                <img src="./images/case-studies/IMG_4912.jpeg" alt="Professional silicone rendering project" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="alt container">
+        <div class="section-header">
+            <span class="section-label">System Comparison</span>
+            <h2>Which Render Is Right For Your Property?</h2>
+        </div>
+
+        <div class="comparison-cards">
+            <div class="comparison-card featured">
+                <span class="featured-badge">★ Gold Standard</span>
+                <h3>Full Silicone</h3>
+                <p>The premium choice for maximum durability and minimal maintenance.</p>
+                <div class="pros-list">
+                    <h4>Pros</h4>
+                    <ul>
+                        <li>25-30 year lifespan</li>
+                        <li>Self-cleaning hydrophobic surface</li>
+                        <li>Prevents algae and damp</li>
+                        <li>Maximum breathability</li>
+                        <li>Through-colored (won't peel)</li>
+                        <li>Flexible & crack-resistant</li>
+                    </ul>
+                </div>
+                <div class="cons-list">
+                    <h4>Cons</h4>
+                    <ul>
+                        <li>Higher upfront cost</li>
+                        <li>Requires proper application</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="comparison-card">
+                <h3>Silicone Enhanced</h3>
+                <p>Smart hybrid system combining silicone benefits with cost efficiency.</p>
+                <div class="pros-list">
+                    <h4>Pros</h4>
+                    <ul>
+                        <li>Better water resistance</li>
+                        <li>Enhanced flexibility</li>
+                        <li>Premium finish at mid-range price</li>
+                        <li>Good durability (15-20 years)</li>
+                        <li>Improved breathability</li>
+                    </ul>
+                </div>
+                <div class="cons-list">
+                    <h4>Cons</h4>
+                    <ul>
+                        <li>Less durable than full silicone</li>
+                        <li>May require maintenance</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="comparison-card">
+                <h3>Acrylic</h3>
+                <p>Flexible all-rounder for modern, cost-effective solutions.</p>
+                <div class="pros-list">
+                    <h4>Pros</h4>
+                    <ul>
+                        <li>Most cost-effective option</li>
+                        <li>Highly flexible & impact-resistant</li>
+                        <li>Wide colour range</li>
+                        <li>Quick application</li>
+                        <li>Vibrant finish</li>
+                    </ul>
+                </div>
+                <div class="cons-list">
+                    <h4>Cons</h4>
+                    <ul>
+                        <li>Shorter lifespan (8-12 years)</li>
+                        <li>Requires periodic maintenance</li>
+                        <li>Less water repellent</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Comparison Table -->
+    <section class="container">
+        <div class="comparison-section">
+            <h2 style="font-size: 1.8rem; margin-bottom: 2rem; text-align: center;">Detailed System Comparison</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Full Silicone</th>
+                        <th>Silicone Enhanced</th>
+                        <th>Acrylic</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="feature-name">Expected Lifespan</td>
+                        <td class="pros">25-30 years</td>
+                        <td class="neutral">15-20 years</td>
+                        <td class="cons">8-12 years</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Water Resistance</td>
+                        <td class="pros">Excellent (hydrophobic)</td>
+                        <td class="neutral">Good</td>
+                        <td class="cons">Fair</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Breathability</td>
+                        <td class="pros">Maximum</td>
+                        <td class="neutral">Good</td>
+                        <td class="cons">Limited</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Crack Resistance</td>
+                        <td class="pros">Excellent</td>
+                        <td class="neutral">Good</td>
+                        <td class="neutral">Good</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Self-Cleaning</td>
+                        <td class="pros">Yes</td>
+                        <td class="neutral">Partial</td>
+                        <td class="cons">No</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Algae Resistance</td>
+                        <td class="pros">Excellent</td>
+                        <td class="neutral">Good</td>
+                        <td class="cons">Poor</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Flexibility</td>
+                        <td class="pros">Excellent</td>
+                        <td class="pros">Excellent</td>
+                        <td class="pros">Excellent</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Colour Fade Resistance</td>
+                        <td class="pros">Excellent (through-colored)</td>
+                        <td class="neutral">Good</td>
+                        <td class="neutral">Good</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Maintenance Required</td>
+                        <td class="pros">Minimal</td>
+                        <td class="neutral">Moderate</td>
+                        <td class="cons">Regular</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Initial Cost (relative)</td>
+                        <td class="cons">Higher</td>
+                        <td class="neutral">Mid-range</td>
+                        <td class="pros">Lower</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-name">Warranty Period</td>
+                        <td class="pros">Up to 25 years</td>
+                        <td class="neutral">12-15 years</td>
+                        <td class="cons">5-7 years</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Colours Section -->
+    <section class="alt container">
+        <div class="section-header">
+            <span class="section-label">Design Freedom</span>
+            <h2>Available Silicone Colours & Finishes</h2>
+            <p>Silicone renders offer exceptional versatility with an extensive palette ranging from subtle neutrals to vibrant hues, perfect for modern and traditional properties alike.</p>
+        </div>
+
+        <div class="colours-grid">
+            <div class="colour-swatch">
+                <div class="colour-sample" style="background-color: #E8E4DC;"></div>
+                <div class="colour-name">Cream</div>
+            </div>
+            <div class="colour-swatch">
+                <div class="colour-sample" style="background-color: #D4C4B0;"></div>
+                <div class="colour-name">Taupe</div>
+            </div>
+            <div class="colour-swatch">
+                <div class="colour-sample" style="background-color: #A89968;"></div>
+                <div class="colour-name">Warm Stone</div>
+            </div>
+            <div class="colour-swatch">
+                <div class="colour-sample" style="background-color: #8B7D6B;"></div>
+                <div class="colour-name">Weathered</div>
+            </div>
+            <div class="colour-swatch">
+                <div class="colour-sample" style="background-color: #FFFFFF;"></div>
+                <div class="colour-name">White</div>
+            </div>
+            <div class="colour-swatch">
+                <div class="colour-sample" style="background-color: #F5F5F5;"></div>
+                <div class="colour-name">Off-White</div>
+            </div>
+            <div class="colour-swatch">
+                <div class="colour-sample" style="background-color: #C0C0C0;"></div>
+                <div class="colour-name">Light Grey</div>
+            </div>
+            <div class="colour-swatch">
+                <div class="colour-sample" style="background-color: #808080;"></div>
+                <div class="colour-name">Charcoal</div>
+            </div>
+            <div class="colour-swatch">
+                <div class="colour-sample" style="background-color: #D4A574;"></div>
+                <div class="colour-name">Bronze</div>
+            </div>
+            <div class="colour-swatch">
+                <div class="colour-sample" style="background-color: #8B4513;"></div>
+                <div class="colour-name">Terracotta</div>
+            </div>
+            <div class="colour-swatch">
+                <div class="colour-sample" style="background-color: #3D5A50;"></div>
+                <div class="colour-name">Sage Green</div>
+            </div>
+            <div class="colour-swatch">
+                <div class="colour-sample" style="background-color: #2C3E50;"></div>
+                <div class="colour-name">Deep Navy</div>
+            </div>
+        </div>
+
+        <p style="text-align: center; color: var(--color-slate-700); font-size: 0.95rem; margin-top: 3rem;">
+            <strong>Note:</strong> All colours are "through-colored," meaning the pigment runs throughout the material. This eliminates the risk of colour fading or peeling over time. You'll maintain the exact same vibrant finish for decades.
+        </p>
+    </section>
+
+    <!-- System Breakdown -->
+    <section class="container">
+        <div class="section-header">
+            <span class="section-label">How It Works</span>
+            <h2>Silicone System Breakdown</h2>
+            <p>Professional silicone rendering is a multi-layer system engineered for strength, flexibility, and longevity.</p>
+        </div>
+
+        <div class="system-breakdown">
+            <div class="system-layer">
+                <h4>1. Base Coat Foundation</h4>
+                <p>A fibre-reinforced polymer-modified base coat is applied directly to the substrate. This layer provides strength and ensures proper adhesion.</p>
+            </div>
+            <div class="system-layer">
+                <h4>2. Alkali-Resistant Mesh</h4>
+                <p>High-grade reinforcement mesh is embedded into the base coat. This allows the system to flex with building movement, preventing hairline cracks.</p>
+            </div>
+            <div class="system-layer">
+                <h4>3. Levelling Coat</h4>
+                <p>A thin levelling coat creates a smooth, uniform surface, ensuring consistent texture and finish quality.</p>
+            </div>
+            <div class="system-layer">
+                <h4>4. Primer</h4>
+                <p>Professional primer ensures optimal adhesion and colour intensity for the final topcoat.</p>
+            </div>
+            <div class="system-layer">
+                <h4>5. Silicone Topcoat</h4>
+                <p>The premium silicone finish provides the hydrophobic, self-cleaning, through-colored surface that defines the system's performance.</p>
+            </div>
+            <div class="system-layer">
+                <h4>Texture Options</h4>
+                <p>Choose from fine, medium, or coarse textures (typically 1.5mm). Texture affects water drainage, light play, and aesthetic appeal.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Costing Section -->
+    <section class="alt container">
+        <div class="section-header">
+            <span class="section-label">Transparent Pricing</span>
+            <h2>Estimated Project Costs by Property Type</h2>
+            <p>All prices are based on standard scaffolding and a full professional system. Final quotes depend on property size, condition, and selected options.</p>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Mid-Terrace</h3>
+                <div class="pricing-property">Typical property: 2-3 bed, single elevation</div>
+                <div class="pricing-range">£4,500 – £6,500</div>
+                <div class="pricing-details">
+                    <ul style="margin-left: 1rem;">
+                        <li>Ideal for refreshing traditional brick terraces</li>
+                        <li>Single-colour finish</li>
+                        <li>Standard scaffolding included</li>
+                    </ul>
+                </div>
+                <button class="pricing-cta">Get Quote</button>
+            </div>
+
+            <div class="pricing-card">
+                <h3>3 Bed Semi</h3>
+                <div class="pricing-property">Typical property: 3 elevation, gable end</div>
+                <div class="pricing-range">£6,500 – £9,500</div>
+                <div class="pricing-details">
+                    <ul style="margin-left: 1rem;">
+                        <li>Covers three main elevations</li>
+                        <li>Price varies with gable size</li>
+                        <li>Option to add EWI systems</li>
+                    </ul>
+                </div>
+                <button class="pricing-cta">Get Quote</button>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Detached Property</h3>
+                <div class="pricing-property">Typical property: All 4 elevations</div>
+                <div class="pricing-range">£9,500 – £13,000+</div>
+                <div class="pricing-details">
+                    <ul style="margin-left: 1rem;">
+                        <li>Comprehensive transformation</li>
+                        <li>All elevations included</li>
+                        <li>Most benefit from self-cleaning properties</li>
+                    </ul>
+                </div>
+                <button class="pricing-cta">Get Quote</button>
+            </div>
+        </div>
+
+        <div style="background: white; border-radius: 0.75rem; padding: 2rem; margin-top: 3rem; border-left: 4px solid var(--color-lime-400);">
+            <h3 style="font-size: 1.1rem; margin-bottom: 1rem;">What's Included in Every Quote:</h3>
+            <ul style="columns: 2; gap: 2rem; color: var(--color-slate-700);">
+                <li style="margin-bottom: 1rem;">✓ Free professional site survey</li>
+                <li style="margin-bottom: 1rem;">✓ Detailed cost breakdown</li>
+                <li style="margin-bottom: 1rem;">✓ Substrate assessment & recommendations</li>
+                <li style="margin-bottom: 1rem;">✓ Colour selection assistance</li>
+                <li style="margin-bottom: 1rem;">✓ Timeline & project scheduling</li>
+                <li style="margin-bottom: 1rem;">✓ 25-year warranty details</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Application Process -->
+    <section class="container">
+        <div class="section-header">
+            <span class="section-label">Professional Process</span>
+            <h2>Our Professional Installation Method</h2>
+        </div>
+
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h4>Free Site Survey</h4>
+                <p>We assess your substrate, take precise measurements, and discuss your goals—modernization or energy efficiency.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h4>Specification & Quote</h4>
+                <p>Detailed transparent quote with system selection and colour options. We guide you through every choice.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h4>Preparation & Protection</h4>
+                <p>Full site masking, window/door protection, and installation of corner beading for sharp, durable lines.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <h4>Professional Application</h4>
+                <p>Multi-layer system: base coat with mesh, levelling coat, primer, and silicone topcoat with chosen texture.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">5</div>
+                <h4>Quality Check & Handover</h4>
+                <p>Thorough inspection, full site clean-up, walkthrough of finished project, and warranty documentation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="alt container">
+        <div class="section-header">
+            <span class="section-label">Common Questions</span>
+            <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="faq-item">
+                <div class="faq-header" onclick="toggleFAQ(this)">
+                    <span class="faq-title">Will silicone rendering stop my house from cracking?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-content">
+                    <p>Silicone render is highly flexible and we embed a structural alkali-resistant mesh into the base coat. This allows the render to move slightly with your building as it expands and contracts with temperature changes. This virtually eliminates the hairline cracks you see in traditional plastering.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-header" onclick="toggleFAQ(this)">
+                    <span class="faq-title">Is it really "self-cleaning"?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-content">
+                    <p>Yes. Silicone render is hydrophobic, meaning rainwater beads up and rolls off the surface, taking most dirt and dust with it. It significantly resists green algae growth, which is a common problem with older renders in damp UK climates. You'll notice a dramatic difference in maintenance requirements compared to traditional renders.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-header" onclick="toggleFAQ(this)">
+                    <span class="faq-title">How long does silicone render actually last?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-content">
+                    <p>When applied correctly as a full system, silicone render lasts 25-30 years. Unlike traditional sand and cement, it doesn't brittle with age. The colour is "through-colored"—built into the material—so it won't peel or flake off. This is why manufacturers offer 25-year warranties on full silicone systems.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-header" onclick="toggleFAQ(this)">
+                    <span class="faq-title">What areas do you serve?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-content">
+                    <p>We're proud local specialists serving Sheffield and South Yorkshire. Whether you're on the exposed hills of Stannington and Loxley or in the leafy suburbs of Dore, Totley, and Ecclesall—from traditional Crookes terraces to modern Chapeltown developments—we bring expert silicone rendering to your doorstep. We also regularly serve Rotherham, Chesterfield, and Dronfield.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-header" onclick="toggleFAQ(this)">
+                    <span class="faq-title">Do you work on period properties?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-content">
+                    <p>Absolutely. We have extensive experience with period properties and understand the specific requirements for listed buildings and heritage properties. We use appropriate materials and techniques for each property type, ensuring both protection and aesthetic compatibility.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-header" onclick="toggleFAQ(this)">
+                    <span class="faq-title">What warranty do you provide?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-content">
+                    <p>All our systems are installed with BBA-approved materials backed by manufacturer guarantees of up to 25 years. We also provide our own 10-year workmanship guarantee, ensuring your investment is fully protected. You can work with complete confidence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="container">
+        <div class="cta-final">
+            <h2>Ready to Transform Your Property?</h2>
+            <p>Take the first step with a free, no-obligation professional survey. We'll assess your property, discuss your goals, and provide a transparent, detailed quote.</p>
+            <button class="pricing-cta" style="margin-top: 1rem;">Get Your Free Quote Today</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3 style="margin-bottom: 1.5rem;">Plaster and Rendering Solutions</h3>
+            <p><strong>Phone:</strong> <a href="tel:07595399525">07595 399 525</a></p>
+            <p><strong>Email:</strong> <a href="mailto:plastersolutionsltd@gmail.com">plastersolutionsltd@gmail.com</a></p>
+            <p><strong>Address:</strong> 3 Rocher Close, Grenoside, Sheffield S35 8QP</p>
+            <p><strong>Hours:</strong> Monday-Sunday, 8am - 8pm</p>
+            <hr style="margin: 1.5rem 0; opacity: 0.2;" />
+            <p>&copy; 2026 Plaster and Rendering Solutions. All rights reserved.</p>
+            <p>Sheffield | South Yorkshire | BBA Approved | 25-Year Warranty</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFAQ(header) {
+            const faqItem = header.parentElement;
+            faqItem.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
