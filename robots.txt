@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.plasterandrenderingsolutions.co.uk/sitemap.xml
