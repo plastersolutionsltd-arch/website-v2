@@ -1501,10 +1501,97 @@
         // ============================================================
         function LogoP({ className = "" }) {
             return (
-                <svg className={`w-12 h-12 ${className}`} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="100" height="100" fill="none" />
-                    <path d="M25 15 L25 85 M25 15 L55 15 Q70 15 70 30 Q70 45 55 45 L25 45" stroke="#00FF00" strokeWidth="12" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                <img
+                    src="./images/logos/logo-p.png"
+                    alt="Plaster and Rendering Solutions - P&RS Logo"
+                    className={`w-12 h-12 ${className}`}
+                    style={{ objectFit: 'contain' }}
+                />
+            );
+        }
+
+        // ============================================================
+        // COMPONENT: Before/After Slider
+        // ============================================================
+        function BeforeAfterSlider({ beforeImage, afterImage, beforeLabel = 'Before', afterLabel = 'After', altText = 'Before and after comparison' }) {
+            const [sliderPosition, setSliderPosition] = useState(50);
+            const sliderRef = useRef(null);
+            const [isDragging, setIsDragging] = useState(false);
+
+            const handleMouseDown = () => setIsDragging(true);
+            const handleMouseUp = () => setIsDragging(false);
+            const handleMouseMove = (e) => {
+                if (!isDragging || !sliderRef.current) return;
+
+                const rect = sliderRef.current.getBoundingClientRect();
+                const newPosition = ((e.clientX - rect.left) / rect.width) * 100;
+                setSliderPosition(Math.max(0, Math.min(100, newPosition)));
+            };
+
+            const handleTouchStart = () => setIsDragging(true);
+            const handleTouchEnd = () => setIsDragging(false);
+            const handleTouchMove = (e) => {
+                if (!isDragging || !sliderRef.current) return;
+
+                const rect = sliderRef.current.getBoundingClientRect();
+                const newPosition = ((e.touches[0].clientX - rect.left) / rect.width) * 100;
+                setSliderPosition(Math.max(0, Math.min(100, newPosition)));
+            };
+
+            return (
+                <div
+                    ref={sliderRef}
+                    className="relative w-full h-96 cursor-col-resize overflow-hidden rounded-xl bg-charcoal-900 select-none"
+                    onMouseMove={handleMouseMove}
+                    onMouseLeave={handleMouseUp}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
+                >
+                    {/* After Image (Background) */}
+                    <img
+                        src={afterImage}
+                        alt={`${afterLabel}: ${altText}`}
+                        className="absolute inset-0 w-full h-full object-cover"
+                        draggable="false"
+                    />
+
+                    {/* Before Image (Overlay) */}
+                    <div
+                        className="absolute inset-0 overflow-hidden"
+                        style={{ width: `${sliderPosition}%` }}
+                        onMouseDown={handleMouseDown}
+                        onTouchStart={handleTouchStart}
+                    >
+                        <img
+                            src={beforeImage}
+                            alt={`${beforeLabel}: ${altText}`}
+                            className="w-screen h-full object-cover"
+                            draggable="false"
+                            style={{ width: `${sliderRef.current?.offsetWidth}px` }}
+                        />
+                    </div>
+
+                    {/* Slider Handle */}
+                    <div
+                        className="absolute top-0 bottom-0 w-1 bg-lime-500 cursor-col-resize hover:w-2 transition-all duration-200 shadow-lg"
+                        style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
+                        onMouseDown={handleMouseDown}
+                        onTouchStart={handleTouchStart}
+                    >
+                        {/* Handle Icon */}
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-lime-500 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-200">
+                            <span className="text-charcoal-900 font-bold text-lg select-none">‹ ›</span>
+                        </div>
+                    </div>
+
+                    {/* Labels */}
+                    <div className="absolute top-6 left-6 bg-charcoal-900/80 backdrop-blur-sm px-4 py-2 rounded-lg border border-lime-500/50">
+                        <span className="text-white font-display font-bold text-sm">{beforeLabel}</span>
+                    </div>
+                    <div className="absolute top-6 right-6 bg-charcoal-900/80 backdrop-blur-sm px-4 py-2 rounded-lg border border-lime-500/50">
+                        <span className="text-white font-display font-bold text-sm">{afterLabel}</span>
+                    </div>
+                </div>
             );
         }
 
@@ -1525,6 +1612,7 @@
             const navItems = [
                 { id: 'home', label: 'Home' },
                 { id: 'services', label: 'Services' },
+                { id: 'portfolio', label: 'Portfolio' },
                 { id: 'how-we-apply', label: 'How We Apply' },
                 { id: 'pricing', label: 'Pricing' },
                 { id: 'warranties', label: 'Warranties' },
@@ -1548,7 +1636,7 @@
                                     <LogoP />
                                 </div>
                                 <span className="font-display font-bold text-charcoal-900 text-sm tracking-tight hidden sm:block">
-                                    P&RS
+                                    P&R Solutions
                                 </span>
                             </button>
 
@@ -1558,7 +1646,7 @@
                                     <button
                                         key={item.id}
                                         onClick={() => navigate(item.id)}
-                                        className={`link-hover font-body text-sm tracking-wide transition-colors duration-300 ${currentPage === item.id || currentPage.startsWith('service-') ? (item.id === 'services' ? 'text-lime-400' : currentPage === item.id ? 'text-lime-400' : 'text-slate-800 hover:text-lime-400') : 'text-slate-800 hover:text-lime-400'
+                                        className={`link-hover font-body text-sm tracking-wide transition-colors duration-300 ${currentPage === item.id || currentPage.startsWith('service-') ? (item.id === 'services' ? 'text-lime-500' : currentPage === item.id ? 'text-lime-500' : 'text-slate-800 hover:text-lime-500') : 'text-slate-800 hover:text-lime-500'
                                             }`}
                                     >
                                         {item.label}
@@ -1566,7 +1654,7 @@
                                 ))}
                                 <button
                                     onClick={() => navigate('contact')}
-                                    className="btn-premium magnetic-btn bg-lime-400 text-charcoal-900 px-6 py-2.5 rounded-full text-sm font-bold tracking-wide hover:bg-lime-500 transition-colors duration-300 shadow-lg hover:shadow-xl"
+                                    className="btn-premium magnetic-btn bg-lime-500 text-charcoal-900 px-6 py-2.5 rounded-full text-sm font-bold tracking-wide hover:bg-lime-500 transition-colors duration-300 shadow-lg hover:shadow-xl"
                                 >
                                     Get Quote
                                 </button>
@@ -1590,7 +1678,7 @@
                                 <button
                                     key={item.id}
                                     onClick={() => navigate(item.id)}
-                                    className={`text-left font-display text-xl font-bold tracking-tight transition-colors duration-300 ${currentPage === item.id ? 'text-lime-400' : 'text-charcoal-900'
+                                    className={`text-left font-display text-xl font-bold tracking-tight transition-colors duration-300 ${currentPage === item.id ? 'text-lime-500' : 'text-charcoal-900'
                                         }`}
                                 >
                                     {item.label}
@@ -2689,16 +2777,16 @@
                         backgroundSize: "cover",
                         backgroundPosition: "center right",
                         backgroundAttachment: "fixed"
-                    }}>
+                    }} aria-label={`${service.shortTitle} service provided by Plaster and Rendering Solutions in Sheffield, South Yorkshire`}>
                         <div className="absolute inset-0 bg-gradient-to-r from-charcoal-900/85 via-charcoal-900/70 to-transparent"></div>
 
                         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full py-20">
                             <div className="max-w-2xl">
-                                <button onClick={() => { setCurrentPage('services'); window.scrollTo({ top: 0 }); }} className="animate-on-scroll text-lime-400 text-sm font-bold hover:text-lime-300 mb-6 flex items-center gap-2">
+                                <button onClick={() => { setCurrentPage('services'); window.scrollTo({ top: 0 }); }} className="animate-on-scroll text-lime-500 text-sm font-bold hover:text-lime-300 mb-6 flex items-center gap-2">
                                     ← Back to Services
                                 </button>
 
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6 bg-lime-400/20 px-3 py-1 rounded-full border border-lime-400/50">
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6 bg-lime-500/20 px-3 py-1 rounded-full border border-lime-500/50">
                                     {service.shortTitle}
                                 </span>
 
@@ -2717,7 +2805,7 @@
                                 <div className="animate-on-scroll stagger-4 flex flex-wrap gap-4">
                                     <button
                                         onClick={() => { setCurrentPage('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                                        className="btn-premium magnetic-btn bg-lime-400 text-charcoal-900 px-8 py-4 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300 shadow-lg hover:shadow-2xl"
+                                        className="btn-premium magnetic-btn bg-lime-500 text-charcoal-900 px-8 py-4 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300 shadow-lg hover:shadow-2xl"
                                     >
                                         Get Quote for {service.shortTitle}
                                     </button>
@@ -2738,14 +2826,14 @@
                             <div className="grid lg:grid-cols-2 gap-20">
                                 {/* Features */}
                                 <div>
-                                    <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Key Features</span>
+                                    <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Key Features</span>
                                     <h2 className="animate-on-scroll stagger-1 font-display text-3xl font-bold text-charcoal-900 leading-tight tracking-tight mb-10">
                                         What Sets This Apart
                                     </h2>
                                     <div className="space-y-4">
                                         {service.features.map((feature, i) => (
                                             <div key={i} className={`animate-on-scroll stagger-${Math.min(i + 2, 5)} flex items-start gap-4`}>
-                                                <div className="w-6 h-6 rounded-full bg-lime-400 flex items-center justify-center flex-shrink-0 mt-1">
+                                                <div className="w-6 h-6 rounded-full bg-lime-500 flex items-center justify-center flex-shrink-0 mt-1">
                                                     <svg className="w-4 h-4 text-charcoal-900" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="3">
                                                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                                                     </svg>
@@ -2758,7 +2846,7 @@
 
                                 {/* Benefits */}
                                 <div>
-                                    <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Why Choose Us</span>
+                                    <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Why Choose Us</span>
                                     <h2 className="animate-on-scroll stagger-1 font-display text-3xl font-bold text-charcoal-900 leading-tight tracking-tight mb-10">
                                         Real Benefits
                                     </h2>
@@ -2778,7 +2866,7 @@
                     <section className="py-20 bg-white">
                         <div className="max-w-6xl mx-auto px-6 lg:px-12">
                             <div className="text-center mb-16">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Balanced View</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Balanced View</span>
                                 <h2 className="animate-on-scroll stagger-1 font-display text-4xl font-bold text-charcoal-900 leading-tight tracking-tight mb-6">
                                     Advantages & Considerations
                                 </h2>
@@ -2793,7 +2881,7 @@
                                     <ul className="space-y-5">
                                         {service.benefits && service.benefits.slice(0, 4).map((benefit, i) => (
                                             <li key={i} className="flex gap-4">
-                                                <span className="text-lime-400 font-bold text-2xl flex-shrink-0">+</span>
+                                                <span className="text-lime-500 font-bold text-2xl flex-shrink-0">+</span>
                                                 <div>
                                                     <p className="font-body text-slate-800 font-light">{benefit.replace(/^[^:]+:\s*/, '')}</p>
                                                 </div>
@@ -2821,11 +2909,11 @@
                             </div>
 
                             {/* Full Pricing Comparison Link */}
-                            <div className="animate-on-scroll mt-16 text-center bg-lime-400/10 border-2 border-lime-400/30 rounded-xl p-8">
+                            <div className="animate-on-scroll mt-16 text-center bg-lime-500/10 border-2 border-lime-500/30 rounded-xl p-8">
                                 <p className="font-body text-slate-700 mb-6 text-lg">Want to compare this service with others?</p>
                                 <button
                                     onClick={() => { setCurrentPage('pricing'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                                    className="btn-premium magnetic-btn inline-block bg-lime-400 text-charcoal-900 px-8 py-3 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300 shadow-lg hover:shadow-xl"
+                                    className="btn-premium magnetic-btn inline-block bg-lime-500 text-charcoal-900 px-8 py-3 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300 shadow-lg hover:shadow-xl"
                                 >
                                     View Full Pricing & Comparison
                                 </button>
@@ -2838,7 +2926,7 @@
                         <section className="py-20 bg-white">
                             <div className="max-w-4xl mx-auto px-6 lg:px-12">
                                 <div className="animate-on-scroll">
-                                    <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Expert Installation</span>
+                                    <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Expert Installation</span>
                                     <h2 className="animate-on-scroll stagger-1 font-display text-3xl font-bold text-charcoal-900 leading-tight tracking-tight mb-8">
                                         Professional Installation Excellence
                                     </h2>
@@ -2848,13 +2936,13 @@
                                     <div className="animate-on-scroll stagger-3 mt-8 flex flex-wrap gap-4">
                                         <button
                                             onClick={() => { setCurrentPage('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                                            className="magnetic-btn bg-lime-400 text-charcoal-900 px-6 py-3 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300"
+                                            className="magnetic-btn bg-lime-500 text-charcoal-900 px-6 py-3 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300"
                                         >
                                             Get Professional Assessment
                                         </button>
                                         <button
                                             onClick={() => { setCurrentPage('how-we-apply'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                                            className="magnetic-btn bg-transparent text-charcoal-900 px-6 py-3 rounded-lg text-sm font-bold tracking-wide border-2 border-lime-400 hover:bg-lime-400/10 transition-all duration-300"
+                                            className="magnetic-btn bg-transparent text-charcoal-900 px-6 py-3 rounded-lg text-sm font-bold tracking-wide border-2 border-lime-500 hover:bg-lime-500/10 transition-all duration-300"
                                         >
                                             See Our Application Methods
                                         </button>
@@ -2869,7 +2957,7 @@
                         <section className="py-20 bg-slate-50">
                             <div className="max-w-7xl mx-auto px-6 lg:px-12">
                                 <div className="text-center mb-16">
-                                    <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Premium Partners</span>
+                                    <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Premium Partners</span>
                                     <h2 className="animate-on-scroll stagger-1 font-display text-3xl font-bold text-charcoal-900 leading-tight tracking-tight mb-4">
                                         Trusted Brands We Install
                                     </h2>
@@ -2882,13 +2970,13 @@
                                     {service.trustedBrands.map((brand, i) => (
                                         <div key={i} className={`animate-on-scroll stagger-${Math.min(i + 1, 3)} premium-hover rounded-xl p-8 bg-white border-2 border-slate-200`}>
                                             <div className="mb-4">
-                                                <span className="inline-block text-xs font-bold tracking-[0.15em] uppercase text-lime-400 bg-lime-400/10 px-3 py-1 rounded-full border border-lime-400/30 mb-4">
+                                                <span className="inline-block text-xs font-bold tracking-[0.15em] uppercase text-lime-500 bg-lime-500/10 px-3 py-1 rounded-full border border-lime-500/30 mb-4">
                                                     {brand.tag}
                                                 </span>
                                             </div>
                                             <h3 className="font-display text-2xl font-bold text-charcoal-900 mb-4 tracking-tight">{brand.name}</h3>
                                             <p className="font-body text-slate-700 leading-relaxed font-light mb-6 text-sm">{brand.description}</p>
-                                            <p className="font-body text-xs font-bold text-lime-400 tracking-wide">{brand.specs}</p>
+                                            <p className="font-body text-xs font-bold text-lime-500 tracking-wide">{brand.specs}</p>
                                         </div>
                                     ))}
                                 </div>
@@ -2897,7 +2985,7 @@
                                     <p className="font-body text-slate-600 font-light mb-6">We can source other leading brands based on your specific requirements and budget.</p>
                                     <button
                                         onClick={() => { setCurrentPage('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                                        className="magnetic-btn bg-charcoal-900 text-lime-400 px-8 py-3 rounded-lg text-sm font-bold tracking-wide hover:bg-charcoal-800 border-2 border-lime-400 transition-all duration-300"
+                                        className="magnetic-btn bg-charcoal-900 text-lime-500 px-8 py-3 rounded-lg text-sm font-bold tracking-wide hover:bg-charcoal-800 border-2 border-lime-500 transition-all duration-300"
                                     >
                                         Discuss Your Options
                                     </button>
@@ -2910,7 +2998,7 @@
                     {service.technicalSpecs && (
                         <section className="py-20 bg-white">
                             <div className="max-w-4xl mx-auto px-6 lg:px-12">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Specifications</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Specifications</span>
                                 <h2 className="animate-on-scroll stagger-1 font-display text-3xl font-bold text-charcoal-900 leading-tight tracking-tight mb-12">
                                     Technical Details
                                 </h2>
@@ -2918,8 +3006,8 @@
                                 <div className="animate-on-scroll rounded-xl border-2 border-slate-200 overflow-hidden">
                                     <div className="grid grid-cols-2 md:grid-cols-3 gap-0">
                                         {service.technicalSpecs.map((spec, i) => (
-                                            <div key={i} className={`animate-on-scroll stagger-${Math.min(i + 1, 5)} p-6 border-b border-r border-slate-200 hover:bg-lime-400/5 transition-colors`}>
-                                                <p className="font-body text-xs font-bold text-lime-400 tracking-wide uppercase mb-2">{spec.label}</p>
+                                            <div key={i} className={`animate-on-scroll stagger-${Math.min(i + 1, 5)} p-6 border-b border-r border-slate-200 hover:bg-lime-500/5 transition-colors`}>
+                                                <p className="font-body text-xs font-bold text-lime-500 tracking-wide uppercase mb-2">{spec.label}</p>
                                                 <p className="font-display text-xl font-bold text-charcoal-900">{spec.value}</p>
                                             </div>
                                         ))}
@@ -2933,7 +3021,7 @@
                     {service.colorPalette && (
                         <section className="py-20 bg-slate-50">
                             <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Design Options</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Design Options</span>
                                 <h2 className="animate-on-scroll stagger-1 font-display text-3xl font-bold text-charcoal-900 leading-tight tracking-tight mb-4">
                                     Available Colors
                                 </h2>
@@ -2960,7 +3048,7 @@
                     {service.applicationProcess && (
                         <section className="py-20 bg-white">
                             <div className="max-w-4xl mx-auto px-6 lg:px-12">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Our Method</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Our Method</span>
                                 <h2 className="animate-on-scroll stagger-1 font-display text-3xl font-bold text-charcoal-900 leading-tight tracking-tight mb-12">
                                     Application Process
                                 </h2>
@@ -2970,7 +3058,7 @@
                                         <div key={i} className={`animate-on-scroll stagger-${Math.min(i + 1, 5)} premium-hover rounded-xl p-8 bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200`}>
                                             <div className="flex items-start gap-6">
                                                 <div className="flex-shrink-0">
-                                                    <div className="w-12 h-12 rounded-full bg-lime-400 flex items-center justify-center">
+                                                    <div className="w-12 h-12 rounded-full bg-lime-500 flex items-center justify-center">
                                                         <span className="font-display font-bold text-charcoal-900 text-lg">{i + 1}</span>
                                                     </div>
                                                 </div>
@@ -2990,7 +3078,7 @@
                     {service.idealApplications && (
                         <section className="py-20 bg-slate-50">
                             <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Perfect For</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Perfect For</span>
                                 <h2 className="animate-on-scroll stagger-1 font-display text-3xl font-bold text-charcoal-900 leading-tight tracking-tight mb-12">
                                     Ideal Applications
                                 </h2>
@@ -3011,7 +3099,7 @@
                     {service.ewiSystemTypes && (
                         <section className="py-20 bg-slate-50">
                             <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Material Options</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Material Options</span>
                                 <h2 className="animate-on-scroll stagger-1 font-display text-3xl font-bold text-charcoal-900 leading-tight tracking-tight mb-4">
                                     EWI System Types
                                 </h2>
@@ -3023,7 +3111,7 @@
                                     {service.ewiSystemTypes.map((system, i) => (
                                         <div key={i} className={`animate-on-scroll stagger-${Math.min(i + 1, 3)} premium-hover rounded-xl p-8 bg-white border-2 border-slate-200`}>
                                             <div className="mb-4">
-                                                <span className="inline-block text-2xl font-bold text-lime-400 mb-3">{system.thermal}</span>
+                                                <span className="inline-block text-2xl font-bold text-lime-500 mb-3">{system.thermal}</span>
                                                 <p className="font-body text-xs text-slate-500 font-light">Thermal Conductivity</p>
                                             </div>
                                             <h3 className="font-display text-lg font-bold text-charcoal-900 mb-3 tracking-tight">{system.name}</h3>
@@ -3031,7 +3119,7 @@
                                             <ul className="space-y-2">
                                                 {system.features.map((feature, j) => (
                                                     <li key={j} className="font-body text-sm text-slate-700 flex items-start gap-2 font-light">
-                                                        <span className="text-lime-400 font-bold mt-0.5">✓</span>
+                                                        <span className="text-lime-500 font-bold mt-0.5">✓</span>
                                                         <span>{feature}</span>
                                                     </li>
                                                 ))}
@@ -3047,7 +3135,7 @@
                     {service.installationProcess && (
                         <section className="py-20 bg-white">
                             <div className="max-w-4xl mx-auto px-6 lg:px-12">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Professional Process</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Professional Process</span>
                                 <h2 className="animate-on-scroll stagger-1 font-display text-3xl font-bold text-charcoal-900 leading-tight tracking-tight mb-12">
                                     Installation Process
                                 </h2>
@@ -3057,7 +3145,7 @@
                                         <div key={i} className={`animate-on-scroll stagger-${Math.min(i + 1, 5)} premium-hover rounded-xl p-8 bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200`}>
                                             <div className="flex items-start gap-6">
                                                 <div className="flex-shrink-0">
-                                                    <div className="w-12 h-12 rounded-full bg-lime-400 flex items-center justify-center">
+                                                    <div className="w-12 h-12 rounded-full bg-lime-500 flex items-center justify-center">
                                                         <span className="font-display font-bold text-charcoal-900 text-lg">{i + 1}</span>
                                                     </div>
                                                 </div>
@@ -3077,17 +3165,17 @@
                     {service.thermalPerformance && (
                         <section className="py-20 bg-slate-50">
                             <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Performance Metrics</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Performance Metrics</span>
                                 <h2 className="animate-on-scroll stagger-1 font-display text-3xl font-bold text-charcoal-900 leading-tight tracking-tight mb-12">
                                     Thermal Performance Benefits
                                 </h2>
 
                                 <div className="space-y-6">
                                     {service.thermalPerformance.map((perf, i) => (
-                                        <div key={i} className={`animate-on-scroll stagger-${Math.min(i + 1, 5)} premium-hover rounded-xl p-8 bg-white border-l-4 border-lime-400`}>
+                                        <div key={i} className={`animate-on-scroll stagger-${Math.min(i + 1, 5)} premium-hover rounded-xl p-8 bg-white border-l-4 border-lime-500`}>
                                             <div className="grid md:grid-cols-3 gap-6 items-center">
                                                 <div>
-                                                    <p className="font-display text-sm font-bold text-lime-400 tracking-wide uppercase mb-2">Key Metric</p>
+                                                    <p className="font-display text-sm font-bold text-lime-500 tracking-wide uppercase mb-2">Key Metric</p>
                                                     <p className="font-display text-lg font-bold text-charcoal-900">{perf.metric}</p>
                                                 </div>
                                                 <div className="md:col-span-2">
@@ -3105,7 +3193,7 @@
                     {service.plasteringServices && (
                         <section className="py-20 bg-white">
                             <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Our Offerings</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Our Offerings</span>
                                 <h2 className="animate-on-scroll stagger-1 font-display text-3xl font-bold text-charcoal-900 leading-tight tracking-tight mb-12">
                                     Plastering Services
                                 </h2>
@@ -3118,7 +3206,7 @@
                                             <ul className="space-y-2">
                                                 {svc.features && svc.features.map((feature, j) => (
                                                     <li key={j} className="font-body text-sm text-slate-700 flex items-start gap-2 font-light">
-                                                        <span className="text-lime-400 font-bold mt-0.5">✓</span>
+                                                        <span className="text-lime-500 font-bold mt-0.5">✓</span>
                                                         <span>{feature}</span>
                                                     </li>
                                                 ))}
@@ -3134,7 +3222,7 @@
                     {service.plasteringProcess && (
                         <section className="py-20 bg-slate-50">
                             <div className="max-w-4xl mx-auto px-6 lg:px-12">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Our Process</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Our Process</span>
                                 <h2 className="animate-on-scroll stagger-1 font-display text-3xl font-bold text-charcoal-900 leading-tight tracking-tight mb-12">
                                     Professional Installation Process
                                 </h2>
@@ -3144,7 +3232,7 @@
                                         <div key={i} className={`animate-on-scroll stagger-${Math.min(i + 1, 6)} premium-hover rounded-xl p-8 bg-white border-2 border-slate-200`}>
                                             <div className="flex items-start gap-6">
                                                 <div className="flex-shrink-0">
-                                                    <div className="w-12 h-12 rounded-full bg-lime-400 flex items-center justify-center">
+                                                    <div className="w-12 h-12 rounded-full bg-lime-500 flex items-center justify-center">
                                                         <span className="font-display font-bold text-charcoal-900 text-lg">{i + 1}</span>
                                                     </div>
                                                 </div>
@@ -3164,7 +3252,7 @@
                     {service.availableFinishes && (
                         <section className="py-20 bg-white">
                             <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Design Choice</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Design Choice</span>
                                 <h2 className="animate-on-scroll stagger-1 font-display text-3xl font-bold text-charcoal-900 leading-tight tracking-tight mb-4">
                                     Available Finishes
                                 </h2>
@@ -3188,7 +3276,7 @@
                     {service.projectApplications && (
                         <section className="py-20 bg-slate-50">
                             <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Ideal For</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Ideal For</span>
                                 <h2 className="animate-on-scroll stagger-1 font-display text-3xl font-bold text-charcoal-900 leading-tight tracking-tight mb-12">
                                     Project Applications
                                 </h2>
@@ -3209,14 +3297,14 @@
                     {service.systemComparison && (
                         <section className="py-20 bg-white">
                             <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">System Comparison</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">System Comparison</span>
                                 <h2 className="animate-on-scroll stagger-1 font-display text-3xl font-bold text-charcoal-900 leading-tight tracking-tight mb-12">
                                     Which Render Is Right For Your Property?
                                 </h2>
                                 <div className="grid md:grid-cols-3 gap-8">
                                     {service.systemComparison.map((system, i) => (
-                                        <div key={i} className={`animate-on-scroll stagger-${Math.min(i + 1, 3)} rounded-xl p-8 border-2 transition-all duration-300 ${system.featured ? 'border-lime-400 bg-gradient-to-br from-lime-400/5 to-white' : 'border-slate-200 bg-white'} hover:shadow-lg`}>
-                                            {system.badge && <span className="inline-block bg-lime-400 text-charcoal-900 px-3 py-1 rounded text-xs font-bold mb-4">{system.badge}</span>}
+                                        <div key={i} className={`animate-on-scroll stagger-${Math.min(i + 1, 3)} rounded-xl p-8 border-2 transition-all duration-300 ${system.featured ? 'border-lime-500 bg-gradient-to-br from-lime-500/5 to-white' : 'border-slate-200 bg-white'} hover:shadow-lg`}>
+                                            {system.badge && <span className="inline-block bg-lime-500 text-charcoal-900 px-3 py-1 rounded text-xs font-bold mb-4">{system.badge}</span>}
                                             <h3 className="font-display text-xl font-bold text-charcoal-900 mb-2">{system.name}</h3>
                                             <p className="text-sm text-slate-600 mb-6 font-light">{system.description}</p>
                                             <div className="mb-6">
@@ -3242,7 +3330,7 @@
                     {service.pricingGuide && (
                         <section className="py-20 bg-slate-50">
                             <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Transparent Pricing</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Transparent Pricing</span>
                                 <h2 className="animate-on-scroll stagger-1 font-display text-3xl font-bold text-charcoal-900 leading-tight tracking-tight mb-4">
                                     Estimated Project Costs by Property Type
                                 </h2>
@@ -3251,10 +3339,10 @@
                                 </p>
                                 <div className="grid md:grid-cols-3 gap-8">
                                     {service.pricingGuide.map((pricing, i) => (
-                                        <div key={i} className={`animate-on-scroll stagger-${Math.min(i + 1, 3)} rounded-xl p-8 bg-white border-2 border-slate-200 hover:border-lime-400 transition-all`}>
+                                        <div key={i} className={`animate-on-scroll stagger-${Math.min(i + 1, 3)} rounded-xl p-8 bg-white border-2 border-slate-200 hover:border-lime-500 transition-all`}>
                                             <h3 className="font-display text-lg font-bold text-charcoal-900 mb-2">{pricing.property}</h3>
                                             <p className="text-xs text-slate-600 mb-4 font-light">{pricing.description}</p>
-                                            <div className="text-2xl font-bold text-lime-400 mb-6">{pricing.priceRange}</div>
+                                            <div className="text-2xl font-bold text-lime-500 mb-6">{pricing.priceRange}</div>
                                             <ul className="space-y-3 text-sm font-light text-slate-700">
                                                 {pricing.details.map((detail, j) => <li key={j} className="flex gap-2"><span>•</span><span>{detail}</span></li>)}
                                             </ul>
@@ -3269,7 +3357,7 @@
                     {service.systemBreakdown && (
                         <section className="py-20 bg-white">
                             <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">How It Works</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">How It Works</span>
                                 <h2 className="animate-on-scroll stagger-1 font-display text-3xl font-bold text-charcoal-900 leading-tight tracking-tight mb-4">
                                     System Breakdown
                                 </h2>
@@ -3278,7 +3366,7 @@
                                 </p>
                                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                                     {service.systemBreakdown.map((layer, i) => (
-                                        <div key={i} className={`animate-on-scroll stagger-${Math.min(i + 1, 6)} rounded-lg p-6 bg-gradient-to-br from-slate-50 to-white border-l-4 border-lime-400`}>
+                                        <div key={i} className={`animate-on-scroll stagger-${Math.min(i + 1, 6)} rounded-lg p-6 bg-gradient-to-br from-slate-50 to-white border-l-4 border-lime-500`}>
                                             <h4 className="font-display font-bold text-charcoal-900 mb-3">{i + 1}. {layer.layer}</h4>
                                             <p className="text-sm text-slate-700 leading-relaxed font-light">{layer.description}</p>
                                         </div>
@@ -3295,7 +3383,7 @@
                     {service.faqItems && service.faqItems.length > 0 && (
                         <section className="py-20 bg-slate-50">
                             <div className="max-w-3xl mx-auto px-6 lg:px-12">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Frequently Asked</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Frequently Asked</span>
                                 <h2 className="animate-on-scroll stagger-1 font-display text-3xl font-bold text-charcoal-900 mb-12">
                                     Questions About {service.shortTitle}
                                 </h2>
@@ -3308,8 +3396,8 @@
                                                     onClick={() => setIsOpen(!isOpen)}
                                                     className="w-full flex items-center justify-between py-6 text-left group"
                                                 >
-                                                    <span className="font-display text-lg font-bold text-charcoal-900 pr-8 group-hover:text-lime-400 transition-colors duration-300">{item.q}</span>
-                                                    <span className={`flex-shrink-0 w-8 h-8 rounded-full border-2 border-slate-300 flex items-center justify-center transition-all duration-500 ${isOpen ? 'bg-lime-400 border-lime-400' : 'group-hover:border-lime-400'}`}>
+                                                    <span className="font-display text-lg font-bold text-charcoal-900 pr-8 group-hover:text-lime-500 transition-colors duration-300">{item.q}</span>
+                                                    <span className={`flex-shrink-0 w-8 h-8 rounded-full border-2 border-slate-300 flex items-center justify-center transition-all duration-500 ${isOpen ? 'bg-lime-500 border-lime-500' : 'group-hover:border-lime-500'}`}>
                                                         <svg className={`w-4 h-4 transition-colors duration-300 ${isOpen ? 'text-charcoal-900' : 'text-slate-700'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
                                                         </svg>
@@ -3329,7 +3417,7 @@
                     {/* CTA */}
                     <section className="py-20 bg-charcoal-900">
                         <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
-                            <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Ready?</span>
+                            <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Ready?</span>
                             <h2 className="animate-on-scroll stagger-1 font-display text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight mb-6">
                                 Get Your Free {service.shortTitle} Quote
                             </h2>
@@ -3338,7 +3426,7 @@
                             </p>
                             <button
                                 onClick={() => { setCurrentPage('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                                className="animate-on-scroll stagger-3 magnetic-btn bg-lime-400 text-charcoal-900 px-10 py-4 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300"
+                                className="animate-on-scroll stagger-3 magnetic-btn bg-lime-500 text-charcoal-900 px-10 py-4 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300"
                             >
                                 Request Free Quote
                             </button>
@@ -3368,18 +3456,18 @@
                 <div className="page-transition">
                     {/* Hero - Full Width Background */}
                     <section className="relative w-full h-screen flex items-center justify-start overflow-hidden" style={{
-                        backgroundImage: "linear-gradient(135deg, rgba(29, 31, 33, 0.5) 0%, rgba(45, 45, 45, 0.6) 100%), url('images/hero/silicone-service.jpeg')",
+                        backgroundImage: "linear-gradient(135deg, rgba(29, 31, 33, 0.5) 0%, rgba(45, 45, 45, 0.6) 100%), url('images/case-studies/IMG_0291.jpeg')",
                         backgroundSize: "cover",
                         backgroundPosition: "center right",
                         backgroundAttachment: "fixed"
-                    }}>
+                    }} aria-label="White silicone render finishing on two-story residential property in Loxley, Sheffield by Plaster and Rendering Solutions, featuring white sash windows">
                         <div className="absolute inset-0 bg-gradient-to-r from-charcoal-900/85 via-charcoal-900/70 to-transparent"></div>
 
                         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full py-20">
                             <div className="max-w-2xl">
                                 <div className="animate-on-scroll">
-                                    <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-lime-400/20 border border-lime-400/50 text-lime-400 text-xs font-bold tracking-widest uppercase mb-8">
-                                        <span className="w-2 h-2 rounded-full bg-lime-400"></span>
+                                    <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-lime-500/20 border border-lime-500/50 text-lime-500 text-xs font-bold tracking-widest uppercase mb-8">
+                                        <span className="w-2 h-2 rounded-full bg-lime-500"></span>
                                         Sheffield Specialists
                                     </span>
                                 </div>
@@ -3387,7 +3475,7 @@
                                 <h1 className="animate-on-scroll stagger-1 font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-8">
                                     Specialist External
                                     <br />
-                                    <span className="text-lime-400">Rendering & Plastering</span>
+                                    <span className="text-lime-500">Rendering & Plastering</span>
                                 </h1>
 
                                 <p className="animate-on-scroll stagger-2 font-body text-lg text-slate-200 leading-relaxed mb-10 font-light">
@@ -3397,7 +3485,7 @@
                                 <div className="animate-on-scroll stagger-3 flex flex-wrap gap-4 mb-12">
                                     <button
                                         onClick={() => { setCurrentPage('services'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                                        className="btn-premium magnetic-btn bg-lime-400 text-charcoal-900 px-8 py-4 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300 shadow-lg hover:shadow-2xl"
+                                        className="btn-premium magnetic-btn bg-lime-500 text-charcoal-900 px-8 py-4 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300 shadow-lg hover:shadow-2xl"
                                     >
                                         View Services
                                     </button>
@@ -3411,15 +3499,15 @@
 
                                 <div className="animate-on-scroll stagger-4 flex flex-wrap gap-8 md:gap-12 pt-10 border-t border-white/20">
                                     <div>
-                                        <div className="font-display text-4xl font-bold text-lime-400">25Y</div>
+                                        <div className="font-display text-4xl font-bold text-lime-500">25Y</div>
                                         <div className="font-body text-xs text-slate-300 mt-1 tracking-wide uppercase font-bold">Manufacturer Warranty</div>
                                     </div>
                                     <div>
-                                        <div className="font-display text-4xl font-bold text-lime-400">5Y</div>
+                                        <div className="font-display text-4xl font-bold text-lime-500">5Y</div>
                                         <div className="font-body text-xs text-slate-300 mt-1 tracking-wide uppercase font-bold">Workmanship Guarantee</div>
                                     </div>
                                     <div>
-                                        <div className="font-display text-4xl font-bold text-lime-400">0%</div>
+                                        <div className="font-display text-4xl font-bold text-lime-500">0%</div>
                                         <div className="font-body text-xs text-slate-300 mt-1 tracking-wide uppercase font-bold">Deposit Required</div>
                                     </div>
                                 </div>
@@ -3432,16 +3520,16 @@
                         <div className="max-w-7xl mx-auto px-6 lg:px-12">
                             <div className="grid lg:grid-cols-2 gap-16 items-center">
                                 <div className="animate-on-scroll-left">
-                                    <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-lime-400 hover:shadow-3xl transition-all duration-500">
+                                    <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-lime-500 hover:shadow-3xl transition-all duration-500">
                                         <img
                                             src="./images/case-studies/IMG_4912.jpeg"
-                                            alt="Professional plaster and rendering project showcase"
+                                            alt="Completed plaster and rendering project showcase by Plaster and Rendering Solutions Limited in Sheffield"
                                             className="w-full h-auto object-cover"
                                         />
                                     </div>
                                 </div>
                                 <div>
-                                    <span className="animate-on-scroll-right inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">About Us</span>
+                                    <span className="animate-on-scroll-right inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">About Us</span>
                                     <h2 className="animate-on-scroll-right stagger-1 font-display text-4xl lg:text-5xl font-bold text-charcoal-900 leading-tight tracking-tight mb-8">
                                         Excellence in every finish
                                     </h2>
@@ -3454,10 +3542,55 @@
                                     <div className="divider-line h-[2px] mb-8"></div>
                                     <button
                                         onClick={() => { setCurrentPage('services'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                                        className="btn-premium animate-on-scroll-right stagger-4 magnetic-btn bg-lime-400 text-charcoal-900 px-8 py-3 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300 shadow-lg hover:shadow-xl"
+                                        className="btn-premium animate-on-scroll-right stagger-4 magnetic-btn bg-lime-500 text-charcoal-900 px-8 py-3 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300 shadow-lg hover:shadow-xl"
                                     >
                                         Explore Our Work
                                     </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Before & After Slider */}
+                    <section className="py-20 bg-charcoal-900">
+                        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                            <div className="grid lg:grid-cols-2 gap-16 items-center">
+                                <div>
+                                    <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Transformation</span>
+                                    <h2 className="animate-on-scroll stagger-1 font-display text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight mb-8">
+                                        Silicone Rendering Excellence
+                                    </h2>
+                                    <p className="animate-on-scroll stagger-2 font-body text-slate-200 leading-relaxed mb-6 font-light text-lg">
+                                        Experience the dramatic transformation of exterior rendering. Our premium silicone rendering systems deliver stunning modern aesthetics with superior durability and weather protection. This Sheffield property showcases the quality of our workmanship and attention to detail.
+                                    </p>
+                                    <div className="flex flex-wrap gap-3 mb-8">
+                                        <span className="inline-block px-4 py-2 bg-lime-500/20 text-lime-300 font-body text-sm font-bold rounded-lg border border-lime-500/50">Silicone Rendering</span>
+                                        <span className="inline-block px-4 py-2 bg-lime-500/20 text-lime-300 font-body text-sm font-bold rounded-lg border border-lime-500/50">Modern Finish</span>
+                                        <span className="inline-block px-4 py-2 bg-lime-500/20 text-lime-300 font-body text-sm font-bold rounded-lg border border-lime-500/50">25-Year Warranty</span>
+                                    </div>
+                                    <p className="animate-on-scroll stagger-3 font-body text-slate-300 leading-relaxed mb-8 font-light">
+                                        ✨ Premium silicone render finish<br/>
+                                        🏗️ Modern stone cladding detail<br/>
+                                        🌧️ Superior weather protection<br/>
+                                        ⚡ Energy-efficient thermal upgrade
+                                    </p>
+                                    <button
+                                        onClick={() => { setCurrentPage('service-silicone'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                                        className="btn-premium animate-on-scroll stagger-4 magnetic-btn bg-lime-500 text-charcoal-900 px-8 py-3 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300 shadow-lg hover:shadow-xl"
+                                    >
+                                        Learn About Silicone Rendering
+                                    </button>
+                                </div>
+                                <div className="animate-on-scroll-right">
+                                    <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-lime-500">
+                                        <BeforeAfterSlider
+                                            beforeImage="./images/case-studies/silicone-render-before.jpg"
+                                            afterImage="./images/case-studies/silicone-render-after.jpg"
+                                            beforeLabel="Before"
+                                            afterLabel="After"
+                                            altText="Before and after silicone rendering transformation on residential property in Sheffield by Plaster and Rendering Solutions"
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -3467,7 +3600,7 @@
                     <section className="py-20">
                         <div className="max-w-7xl mx-auto px-6 lg:px-12">
                             <div className="text-center mb-16">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">What We Offer</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">What We Offer</span>
                                 <h2 className="animate-on-scroll stagger-1 font-display text-4xl lg:text-5xl font-bold text-charcoal-900 leading-tight tracking-tight mb-6">
                                     Professional Rendering & Plastering
                                 </h2>
@@ -3476,7 +3609,7 @@
                             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {services.map((service, i) => (
                                     <div key={i} className={`animate-on-scroll stagger-${Math.min(i + 1, 3)} service-card card-shadow-elevation glass-premium rounded-xl p-8`}>
-                                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-lime-400 to-lime-500 flex items-center justify-center mb-6 shadow-lg">
+                                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-lime-500 to-lime-500 flex items-center justify-center mb-6 shadow-lg">
                                             <span className="text-charcoal-900 font-display font-bold text-lg">0{i + 1}</span>
                                         </div>
                                         <h3 className="font-display text-lg font-bold text-charcoal-900 mb-3 tracking-tight">{service.title}</h3>
@@ -3490,7 +3623,7 @@
                                             </button>
                                             <button
                                                 onClick={() => { setCurrentPage('how-we-apply'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                                                className="text-xs font-bold text-lime-400 hover:text-lime-500 tracking-wider uppercase transition-colors duration-300"
+                                                className="text-xs font-bold text-lime-500 hover:text-lime-500 tracking-wider uppercase transition-colors duration-300"
                                                 title="Learn about our application methods"
                                             >
                                                 How We Apply
@@ -3506,7 +3639,7 @@
                     <section className="py-20 bg-slate-50">
                         <div className="max-w-7xl mx-auto px-6 lg:px-12">
                             <div className="text-center mb-16">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Detailed Comparison</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Detailed Comparison</span>
                                 <h2 className="animate-on-scroll stagger-1 font-display text-4xl lg:text-5xl font-bold text-charcoal-900 leading-tight tracking-tight mb-4">
                                     Service Comparison Guide
                                 </h2>
@@ -3522,7 +3655,7 @@
                                     <div className="overflow-x-auto rounded-xl border-2 border-slate-200 bg-white">
                                         <table className="w-full text-sm">
                                             <thead>
-                                                <tr className="border-b-2 border-slate-200 bg-gradient-to-r from-lime-400/10 to-lime-400/5">
+                                                <tr className="border-b-2 border-slate-200 bg-gradient-to-r from-lime-500/10 to-lime-500/5">
                                                     <th className="text-left px-6 py-5 font-display font-bold text-charcoal-900 tracking-tight">Service</th>
                                                     <th className="text-left px-6 py-5 font-display font-bold text-charcoal-900 tracking-tight">Durability</th>
                                                     <th className="text-left px-6 py-5 font-display font-bold text-charcoal-900 tracking-tight">Cost/m²</th>
@@ -3532,14 +3665,14 @@
                                             </thead>
                                             <tbody>
                                                 <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                                                    <td className="px-6 py-5 font-display font-bold text-lime-400">Silicone Rendering</td>
+                                                    <td className="px-6 py-5 font-display font-bold text-lime-500">Silicone Rendering</td>
                                                     <td className="px-6 py-5 font-body text-slate-700 font-light">15–25 Years</td>
                                                     <td className="px-6 py-5 font-body text-slate-700 font-light">£75–£100+</td>
                                                     <td className="px-6 py-5 font-body text-slate-700 font-light text-sm">✓ Self-cleaning ✓ Hydrophobic ✓ Flexible ✓ Low maintenance</td>
                                                     <td className="px-6 py-5 font-body text-slate-700 font-light text-sm">Higher upfront cost but lowest maintenance</td>
                                                 </tr>
                                                 <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                                                    <td className="px-6 py-5 font-display font-bold text-lime-400">Monocouche Rendering</td>
+                                                    <td className="px-6 py-5 font-display font-bold text-lime-500">Monocouche Rendering</td>
                                                     <td className="px-6 py-5 font-body text-slate-700 font-light">15–20 Years</td>
                                                     <td className="px-6 py-5 font-body text-slate-700 font-light">£55–£80</td>
                                                     <td className="px-6 py-5 font-body text-slate-700 font-light text-sm">✓ Stone-like finish ✓ One coat ✓ Cost-effective ✓ Decorative</td>
@@ -3556,7 +3689,7 @@
                                     <div className="overflow-x-auto rounded-xl border-2 border-slate-200 bg-white">
                                         <table className="w-full text-sm">
                                             <thead>
-                                                <tr className="border-b-2 border-slate-200 bg-gradient-to-r from-lime-400/10 to-lime-400/5">
+                                                <tr className="border-b-2 border-slate-200 bg-gradient-to-r from-lime-500/10 to-lime-500/5">
                                                     <th className="text-left px-6 py-5 font-display font-bold text-charcoal-900 tracking-tight">Service</th>
                                                     <th className="text-left px-6 py-5 font-display font-bold text-charcoal-900 tracking-tight">Performance</th>
                                                     <th className="text-left px-6 py-5 font-display font-bold text-charcoal-900 tracking-tight">Cost</th>
@@ -3566,21 +3699,21 @@
                                             </thead>
                                             <tbody>
                                                 <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                                                    <td className="px-6 py-5 font-display font-bold text-lime-400">EWI Systems</td>
+                                                    <td className="px-6 py-5 font-display font-bold text-lime-500">EWI Systems</td>
                                                     <td className="px-6 py-5 font-body text-slate-700 font-light">20–30% Energy Reduction</td>
                                                     <td className="px-6 py-5 font-body text-slate-700 font-light">£90–£120/m²</td>
                                                     <td className="px-6 py-5 font-body text-slate-700 font-light text-sm">✓ Save £300-600/year ✓ EPC boost ✓ Eliminates damp ✓ +5-10% property value</td>
                                                     <td className="px-6 py-5 font-body text-slate-700 font-light">3–8 weeks</td>
                                                 </tr>
                                                 <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                                                    <td className="px-6 py-5 font-display font-bold text-lime-400">Internal Plastering</td>
+                                                    <td className="px-6 py-5 font-display font-bold text-lime-500">Internal Plastering</td>
                                                     <td className="px-6 py-5 font-body text-slate-700 font-light">Glass-Smooth Finish</td>
                                                     <td className="px-6 py-5 font-body text-slate-700 font-light">£15–£40/m²</td>
                                                     <td className="px-6 py-5 font-body text-slate-700 font-light text-sm">✓ Professional finish ✓ 2-10 year warranty ✓ Fast turnaround ✓ Paint-ready</td>
                                                     <td className="px-6 py-5 font-body text-slate-700 font-light">3–5 days to dry</td>
                                                 </tr>
                                                 <tr className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                                                    <td className="px-6 py-5 font-display font-bold text-lime-400">Dry Lining</td>
+                                                    <td className="px-6 py-5 font-display font-bold text-lime-500">Dry Lining</td>
                                                     <td className="px-6 py-5 font-body text-slate-700 font-light">Fire-Resistant & Fast</td>
                                                     <td className="px-6 py-5 font-body text-slate-700 font-light">£23–£31/m²</td>
                                                     <td className="px-6 py-5 font-body text-slate-700 font-light text-sm">✓ Fastest installation ✓ Cost-effective ✓ Fire-rated options ✓ Acoustic options</td>
@@ -3592,7 +3725,7 @@
                                 </div>
                             </div>
 
-                            <div className="mt-12 p-8 rounded-xl bg-gradient-to-br from-lime-400/10 to-lime-400/5 border-2 border-lime-400/20">
+                            <div className="mt-12 p-8 rounded-xl bg-gradient-to-br from-lime-500/10 to-lime-500/5 border-2 border-lime-500/20">
                                 <p className="font-body text-slate-700 font-light text-center">
                                     <span className="font-bold text-charcoal-900">Not sure which is best?</span> Contact us for a free consultation and site survey. We'll analyze your specific property and recommend the ideal solution tailored to your needs, budget, and long-term goals.
                                 </p>
@@ -3604,7 +3737,7 @@
                     <section className="py-20 bg-white">
                         <div className="max-w-7xl mx-auto px-6 lg:px-12">
                             <div className="text-center mb-20">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">South Yorkshire Pricing</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">South Yorkshire Pricing</span>
                                 <h2 className="animate-on-scroll stagger-1 font-display text-4xl lg:text-5xl font-bold text-charcoal-900 leading-tight tracking-tight mb-4">
                                     Transparent Costing & Pricing
                                 </h2>
@@ -3619,7 +3752,7 @@
                                 <div className="overflow-x-auto rounded-xl border-2 border-slate-200 bg-white shadow-lg">
                                     <table className="w-full text-sm">
                                         <thead>
-                                            <tr className="border-b-2 border-slate-200 bg-gradient-to-r from-lime-400/15 to-lime-400/5">
+                                            <tr className="border-b-2 border-slate-200 bg-gradient-to-r from-lime-500/15 to-lime-500/5">
                                                 <th className="text-left px-8 py-6 font-display font-bold text-charcoal-900 tracking-tight">Service Type</th>
                                                 <th className="text-left px-8 py-6 font-display font-bold text-charcoal-900 tracking-tight">Entry Level</th>
                                                 <th className="text-left px-8 py-6 font-display font-bold text-charcoal-900 tracking-tight">Standard</th>
@@ -3628,36 +3761,36 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr className="border-b border-slate-200 hover:bg-lime-400/5 transition-colors duration-300 pricing-row">
-                                                <td className="px-8 py-6 font-display font-bold text-lime-400">Silicone Rendering</td>
+                                            <tr className="border-b border-slate-200 hover:bg-lime-500/5 transition-colors duration-300 pricing-row">
+                                                <td className="px-8 py-6 font-display font-bold text-lime-500">Silicone Rendering</td>
                                                 <td className="px-8 py-6 font-body text-slate-700 font-light">£75–£85/m²</td>
                                                 <td className="px-8 py-6 font-body text-slate-700 font-light">£85–£100/m²</td>
                                                 <td className="px-8 py-6 font-body text-slate-700 font-light">£100–£120/m²</td>
                                                 <td className="px-8 py-6 font-body text-slate-700 font-light text-sm"><strong>100m² detached:</strong> £8,500–£12,000</td>
                                             </tr>
-                                            <tr className="border-b border-slate-200 hover:bg-lime-400/5 transition-colors duration-300 pricing-row">
-                                                <td className="px-8 py-6 font-display font-bold text-lime-400">Monocouche Rendering</td>
+                                            <tr className="border-b border-slate-200 hover:bg-lime-500/5 transition-colors duration-300 pricing-row">
+                                                <td className="px-8 py-6 font-display font-bold text-lime-500">Monocouche Rendering</td>
                                                 <td className="px-8 py-6 font-body text-slate-700 font-light">£50–£60/m²</td>
                                                 <td className="px-8 py-6 font-body text-slate-700 font-light">£60–£75/m²</td>
                                                 <td className="px-8 py-6 font-body text-slate-700 font-light">£75–£90/m²</td>
                                                 <td className="px-8 py-6 font-body text-slate-700 font-light text-sm"><strong>100m² detached:</strong> £5,500–£9,000</td>
                                             </tr>
-                                            <tr className="border-b border-slate-200 hover:bg-lime-400/5 transition-colors duration-300 pricing-row">
-                                                <td className="px-8 py-6 font-display font-bold text-lime-400">EWI Systems</td>
+                                            <tr className="border-b border-slate-200 hover:bg-lime-500/5 transition-colors duration-300 pricing-row">
+                                                <td className="px-8 py-6 font-display font-bold text-lime-500">EWI Systems</td>
                                                 <td className="px-8 py-6 font-body text-slate-700 font-light">£90–£110/m²</td>
                                                 <td className="px-8 py-6 font-body text-slate-700 font-light">£110–£150/m²</td>
                                                 <td className="px-8 py-6 font-body text-slate-700 font-light">£150–£200/m²</td>
                                                 <td className="px-8 py-6 font-body text-slate-700 font-light text-sm"><strong>Semi-detached:</strong> £10,500–£18,000</td>
                                             </tr>
-                                            <tr className="border-b border-slate-200 hover:bg-lime-400/5 transition-colors duration-300 pricing-row">
-                                                <td className="px-8 py-6 font-display font-bold text-lime-400">Internal Plastering</td>
+                                            <tr className="border-b border-slate-200 hover:bg-lime-500/5 transition-colors duration-300 pricing-row">
+                                                <td className="px-8 py-6 font-display font-bold text-lime-500">Internal Plastering</td>
                                                 <td className="px-8 py-6 font-body text-slate-700 font-light">£15–£20/m²</td>
                                                 <td className="px-8 py-6 font-body text-slate-700 font-light">£20–£30/m²</td>
                                                 <td className="px-8 py-6 font-body text-slate-700 font-light">£30–£40/m²</td>
                                                 <td className="px-8 py-6 font-body text-slate-700 font-light text-sm"><strong>3-bed house:</strong> £1,500–£3,500</td>
                                             </tr>
-                                            <tr className="border-b border-slate-200 hover:bg-lime-400/5 transition-colors duration-300 pricing-row">
-                                                <td className="px-8 py-6 font-display font-bold text-lime-400">Dry Lining</td>
+                                            <tr className="border-b border-slate-200 hover:bg-lime-500/5 transition-colors duration-300 pricing-row">
+                                                <td className="px-8 py-6 font-display font-bold text-lime-500">Dry Lining</td>
                                                 <td className="px-8 py-6 font-body text-slate-700 font-light">£20–£25/m²</td>
                                                 <td className="px-8 py-6 font-body text-slate-700 font-light">£25–£31/m²</td>
                                                 <td className="px-8 py-6 font-body text-slate-700 font-light">£31–£40/m²</td>
@@ -3673,73 +3806,73 @@
 
                             {/* SERVICE PRICING CARDS */}
                             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                                <div className="animate-on-scroll stagger-1 pricing-card rounded-xl p-8 bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 hover:border-lime-400 transition-all duration-500">
+                                <div className="animate-on-scroll stagger-1 pricing-card rounded-xl p-8 bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 hover:border-lime-500 transition-all duration-500">
                                     <h3 className="font-display text-xl font-bold text-charcoal-900 mb-4 tracking-tight">Silicone Rendering</h3>
                                     <div className="mb-6">
-                                        <span className="text-4xl font-bold text-lime-400">£8.5k</span>
+                                        <span className="text-4xl font-bold text-lime-500">£8.5k</span>
                                         <p className="font-body text-sm text-slate-600 mt-2">Average 100m² detached house</p>
                                     </div>
                                     <ul className="space-y-3 mb-6">
                                         <li className="font-body text-sm text-slate-700 flex items-start">
-                                            <span className="text-lime-400 mr-3 font-bold">✓</span>
+                                            <span className="text-lime-500 mr-3 font-bold">✓</span>
                                             <span>15–25 year lifespan</span>
                                         </li>
                                         <li className="font-body text-sm text-slate-700 flex items-start">
-                                            <span className="text-lime-400 mr-3 font-bold">✓</span>
+                                            <span className="text-lime-500 mr-3 font-bold">✓</span>
                                             <span>Self-cleaning hydrophobic</span>
                                         </li>
                                         <li className="font-body text-sm text-slate-700 flex items-start">
-                                            <span className="text-lime-400 mr-3 font-bold">✓</span>
+                                            <span className="text-lime-500 mr-3 font-bold">✓</span>
                                             <span>Minimal maintenance costs</span>
                                         </li>
                                     </ul>
-                                    <button className="w-full pricing-card-btn bg-lime-400 text-charcoal-900 py-3 rounded-lg font-bold text-sm hover:bg-lime-500 transition-all duration-300 cursor-pointer">Get Quote</button>
+                                    <button className="w-full pricing-card-btn bg-lime-500 text-charcoal-900 py-3 rounded-lg font-bold text-sm hover:bg-lime-500 transition-all duration-300 cursor-pointer">Get Quote</button>
                                 </div>
 
-                                <div className="animate-on-scroll stagger-2 pricing-card rounded-xl p-8 bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 hover:border-lime-400 transition-all duration-500">
+                                <div className="animate-on-scroll stagger-2 pricing-card rounded-xl p-8 bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 hover:border-lime-500 transition-all duration-500">
                                     <h3 className="font-display text-xl font-bold text-charcoal-900 mb-4 tracking-tight">Monocouche Rendering</h3>
                                     <div className="mb-6">
-                                        <span className="text-4xl font-bold text-lime-400">£6.5k</span>
+                                        <span className="text-4xl font-bold text-lime-500">£6.5k</span>
                                         <p className="font-body text-sm text-slate-600 mt-2">Average 100m² detached house</p>
                                     </div>
                                     <ul className="space-y-3 mb-6">
                                         <li className="font-body text-sm text-slate-700 flex items-start">
-                                            <span className="text-lime-400 mr-3 font-bold">✓</span>
+                                            <span className="text-lime-500 mr-3 font-bold">✓</span>
                                             <span>Beautiful stone-like finish</span>
                                         </li>
                                         <li className="font-body text-sm text-slate-700 flex items-start">
-                                            <span className="text-lime-400 mr-3 font-bold">✓</span>
+                                            <span className="text-lime-500 mr-3 font-bold">✓</span>
                                             <span>Cost-effective alternative</span>
                                         </li>
                                         <li className="font-body text-sm text-slate-700 flex items-start">
-                                            <span className="text-lime-400 mr-3 font-bold">✓</span>
+                                            <span className="text-lime-500 mr-3 font-bold">✓</span>
                                             <span>15–20 year durability</span>
                                         </li>
                                     </ul>
-                                    <button className="w-full pricing-card-btn bg-lime-400 text-charcoal-900 py-3 rounded-lg font-bold text-sm hover:bg-lime-500 transition-all duration-300 cursor-pointer">Get Quote</button>
+                                    <button className="w-full pricing-card-btn bg-lime-500 text-charcoal-900 py-3 rounded-lg font-bold text-sm hover:bg-lime-500 transition-all duration-300 cursor-pointer">Get Quote</button>
                                 </div>
 
-                                <div className="animate-on-scroll stagger-3 pricing-card rounded-xl p-8 bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 hover:border-lime-400 transition-all duration-500">
+                                <div className="animate-on-scroll stagger-3 pricing-card rounded-xl p-8 bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 hover:border-lime-500 transition-all duration-500">
                                     <h3 className="font-display text-xl font-bold text-charcoal-900 mb-4 tracking-tight">EWI Systems</h3>
                                     <div className="mb-6">
-                                        <span className="text-4xl font-bold text-lime-400">£14.5k</span>
+                                        <span className="text-4xl font-bold text-lime-500">£14.5k</span>
                                         <p className="font-body text-sm text-slate-600 mt-2">Average semi-detached house</p>
                                     </div>
                                     <ul className="space-y-3 mb-6">
                                         <li className="font-body text-sm text-slate-700 flex items-start">
-                                            <span className="text-lime-400 mr-3 font-bold">✓</span>
+                                            <span className="text-lime-500 mr-3 font-bold">✓</span>
                                             <span>Save £300–600/year on heating</span>
                                         </li>
                                         <li className="font-body text-sm text-slate-700 flex items-start">
-                                            <span className="text-lime-400 mr-3 font-bold">✓</span>
+                                            <span className="text-lime-500 mr-3 font-bold">✓</span>
                                             <span>20–30% energy reduction</span>
                                         </li>
                                         <li className="font-body text-sm text-slate-700 flex items-start">
-                                            <span className="text-lime-400 mr-3 font-bold">✓</span>
+                                            <span className="text-lime-500 mr-3 font-bold">✓</span>
                                             <span>Payback in 20–25 years</span>
                                         </li>
                                     </ul>
-                                    <button className="w-full pricing-card-btn bg-lime-400 text-charcoal-900 py-3 rounded-lg font-bold text-sm hover:bg-lime-500 transition-all duration-300 cursor-pointer">Get Quote</button>
+                                    <button className="w-full pricing-card-btn bg-lime-500 text-charcoal-900 py-3 rounded-lg font-bold text-sm hover:bg-lime-500 transition-all duration-300 cursor-pointer">Get Quote</button>
                                 </div>
                             </div>
 
@@ -3747,7 +3880,7 @@
                             <CostCalculatorSection />
 
                             {/* ROI CALCULATOR - EWI */}
-                            <div className="animate-on-scroll mt-16 p-10 rounded-xl bg-gradient-to-br from-lime-400/10 to-lime-400/5 border-2 border-lime-400/30">
+                            <div className="animate-on-scroll mt-16 p-10 rounded-xl bg-gradient-to-br from-lime-500/10 to-lime-500/5 border-2 border-lime-500/30">
                                 <h3 className="font-display text-2xl font-bold text-charcoal-900 mb-8 tracking-tight text-center">EWI Investment Calculator</h3>
                                 <div className="grid md:grid-cols-2 gap-8">
                                     <div>
@@ -3764,11 +3897,11 @@
                                         <input type="number" defaultValue="1500" className="input-premium w-full px-4 py-3 rounded-lg bg-white text-charcoal-900 font-body text-sm" />
                                     </div>
                                 </div>
-                                <div className="mt-8 p-6 rounded-lg bg-white border-2 border-lime-400/20">
+                                <div className="mt-8 p-6 rounded-lg bg-white border-2 border-lime-500/20">
                                     <div className="grid md:grid-cols-3 gap-8 text-center">
                                         <div>
                                             <p className="font-body text-sm text-slate-600 mb-2">Annual Energy Saving</p>
-                                            <p className="font-display text-3xl font-bold text-lime-400">£400–500</p>
+                                            <p className="font-display text-3xl font-bold text-lime-500">£400–500</p>
                                         </div>
                                         <div>
                                             <p className="font-body text-sm text-slate-600 mb-2">Payback Period</p>
@@ -3776,7 +3909,7 @@
                                         </div>
                                         <div>
                                             <p className="font-body text-sm text-slate-600 mb-2">Total 30-Year Savings</p>
-                                            <p className="font-display text-3xl font-bold text-lime-400">£12k–£15k</p>
+                                            <p className="font-display text-3xl font-bold text-lime-500">£12k–£15k</p>
                                         </div>
                                     </div>
                                 </div>
@@ -3788,7 +3921,7 @@
                     <section className="py-20 bg-slate-50">
                         <div className="max-w-7xl mx-auto px-6 lg:px-12">
                             <div className="text-center mb-16">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Local Coverage</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Local Coverage</span>
                                 <h2 className="animate-on-scroll stagger-1 font-display text-4xl lg:text-5xl font-bold text-charcoal-900 leading-tight tracking-tight mb-6">
                                     Serving All Sheffield Postcodes
                                 </h2>
@@ -3814,7 +3947,7 @@
                                         <p className="font-body text-sm text-slate-600 mb-4">
                                             <strong>Postcodes:</strong> {location.postcodes}
                                         </p>
-                                        <p className="font-body text-sm text-lime-400 font-bold">
+                                        <p className="font-body text-sm text-lime-500 font-bold">
                                             {location.projects} Projects Completed
                                         </p>
                                     </div>
@@ -3845,7 +3978,7 @@
                     {/* CTA */}
                     <section className="py-20 bg-charcoal-900">
                         <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
-                            <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Ready To Proceed?</span>
+                            <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Ready To Proceed?</span>
                             <h2 className="animate-on-scroll stagger-1 font-display text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight mb-6">
                                 Get Your Free Quote Today
                             </h2>
@@ -3854,7 +3987,7 @@
                             </p>
                             <button
                                 onClick={() => { setCurrentPage('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                                className="animate-on-scroll stagger-3 magnetic-btn bg-lime-400 text-charcoal-900 px-10 py-4 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300"
+                                className="animate-on-scroll stagger-3 magnetic-btn bg-lime-500 text-charcoal-900 px-10 py-4 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300"
                             >
                                 Request Free Quote
                             </button>
@@ -3914,7 +4047,7 @@
                 <div className="page-transition pt-32 pb-16">
                     <div className="max-w-7xl mx-auto px-6 lg:px-12">
                         <div className="mb-20">
-                            <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Our Expertise</span>
+                            <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Our Expertise</span>
                             <h1 className="animate-on-scroll stagger-1 font-display text-5xl lg:text-6xl font-bold text-charcoal-900 leading-tight tracking-tight mb-6">
                                 Professional Rendering & Plastering Services
                             </h1>
@@ -3927,7 +4060,7 @@
                             {services.map((service, i) => (
                                 <div key={i} className={`animate-on-scroll stagger-${Math.min(i + 1, 3)} service-card rounded-xl p-10 lg:p-12 cursor-pointer`} onClick={() => { setCurrentPage(`service-${service.id}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
                                     <div className="flex items-start gap-6 mb-6">
-                                        <div className="w-14 h-14 rounded-lg bg-lime-400 flex items-center justify-center flex-shrink-0">
+                                        <div className="w-14 h-14 rounded-lg bg-lime-500 flex items-center justify-center flex-shrink-0">
                                             <span className="text-charcoal-900 font-display font-bold text-xl">0{i + 1}</span>
                                         </div>
                                         <h2 className="font-display text-2xl font-bold text-charcoal-900 tracking-tight">{service.title}</h2>
@@ -3935,14 +4068,14 @@
                                     <p className="font-body text-slate-700 leading-relaxed font-light mb-6">{service.desc}</p>
                                     <div className="flex flex-wrap gap-2 mb-6">
                                         {service.features.map((f, j) => (
-                                            <span key={j} className="px-3 py-1 rounded-full bg-slate-100 text-xs font-bold text-lime-400 tracking-wide">
+                                            <span key={j} className="px-3 py-1 rounded-full bg-slate-100 text-xs font-bold text-lime-500 tracking-wide">
                                                 {f}
                                             </span>
                                         ))}
                                     </div>
                                     <button
                                         onClick={(e) => { e.stopPropagation(); setCurrentPage(`service-${service.id}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                                        className="magnetic-btn bg-lime-400 text-charcoal-900 px-6 py-2 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-colors"
+                                        className="magnetic-btn bg-lime-500 text-charcoal-900 px-6 py-2 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-colors"
                                     >
                                         Learn More & Get Quote →
                                     </button>
@@ -3982,7 +4115,7 @@
                 <div className="page-transition pt-32 pb-16">
                     <div className="max-w-7xl mx-auto px-6 lg:px-12">
                         <div className="mb-20">
-                            <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Your Protection</span>
+                            <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Your Protection</span>
                             <h1 className="animate-on-scroll stagger-1 font-display text-5xl lg:text-6xl font-bold text-charcoal-900 leading-tight tracking-tight mb-6">
                                 Total Peace of Mind
                             </h1>
@@ -4005,7 +4138,7 @@
                             <p className="font-body text-lg font-light mb-4">
                                 Fully insured, BBA-approved materials, and industry-leading support
                             </p>
-                            <p className="font-display text-3xl font-bold text-lime-400">
+                            <p className="font-display text-3xl font-bold text-lime-500">
                                 Your peace of mind is our priority
                             </p>
                         </div>
@@ -4036,7 +4169,7 @@
                 <div className="page-transition pt-32 pb-16">
                     <div className="max-w-3xl mx-auto px-6 lg:px-12">
                         <div className="mb-16">
-                            <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Help</span>
+                            <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Help</span>
                             <h1 className="animate-on-scroll stagger-1 font-display text-5xl lg:text-6xl font-bold text-charcoal-900 leading-tight tracking-tight mb-6">
                                 Frequently Asked Questions
                             </h1>
@@ -4049,8 +4182,8 @@
                                         onClick={() => setOpenIndex(openIndex === i ? null : i)}
                                         className="w-full flex items-center justify-between py-6 text-left group"
                                     >
-                                        <span className="font-display text-lg font-bold text-charcoal-900 pr-8 group-hover:text-lime-400 transition-colors duration-300">{faq.q}</span>
-                                        <span className={`flex-shrink-0 w-8 h-8 rounded-full border-2 border-slate-300 flex items-center justify-center transition-all duration-500 ${openIndex === i ? 'bg-lime-400 border-lime-400' : 'group-hover:border-lime-400'}`}>
+                                        <span className="font-display text-lg font-bold text-charcoal-900 pr-8 group-hover:text-lime-500 transition-colors duration-300">{faq.q}</span>
+                                        <span className={`flex-shrink-0 w-8 h-8 rounded-full border-2 border-slate-300 flex items-center justify-center transition-all duration-500 ${openIndex === i ? 'bg-lime-500 border-lime-500' : 'group-hover:border-lime-500'}`}>
                                             <svg className={`w-4 h-4 transition-colors duration-300 ${openIndex === i ? 'text-charcoal-900' : 'text-slate-700'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
                                             </svg>
@@ -4101,14 +4234,14 @@
                 return (
                     <div className="page-transition pt-32 pb-32 min-h-screen flex items-center">
                         <div className="max-w-xl mx-auto px-6 text-center">
-                            <div className="w-20 h-20 rounded-full bg-lime-400 bg-opacity-20 flex items-center justify-center mx-auto mb-8">
-                                <svg className="w-10 h-10 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                            <div className="w-20 h-20 rounded-full bg-lime-500 bg-opacity-20 flex items-center justify-center mx-auto mb-8">
+                                <svg className="w-10 h-10 text-lime-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                                 </svg>
                             </div>
                             <h2 className="font-display text-4xl font-bold text-charcoal-900 mb-4 tracking-tight">Thank you!</h2>
                             <p className="font-body text-slate-700 font-light text-lg">We'll be in touch within 24 hours to discuss your project and provide a free quote.</p>
-                            <p className="font-body text-sm text-slate-600 mt-6">Call us anytime: <span className="font-bold text-lime-400">07595 399525</span></p>
+                            <p className="font-body text-sm text-slate-600 mt-6">Call us anytime: <span className="font-bold text-lime-500">07595 399525</span></p>
                         </div>
                     </div>
                 );
@@ -4120,7 +4253,7 @@
                         <div className="grid lg:grid-cols-2 gap-16 mb-16">
                             {/* Left: Info */}
                             <div>
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Contact</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Contact</span>
                                 <h1 className="animate-on-scroll stagger-1 font-display text-5xl lg:text-6xl font-bold text-charcoal-900 leading-tight tracking-tight mb-6">
                                     Get Your Free Quote
                                 </h1>
@@ -4130,28 +4263,28 @@
 
                                 <div className="space-y-10">
                                     <div className="animate-on-scroll stagger-3">
-                                        <div className="text-xs font-bold tracking-[0.2em] uppercase text-lime-400 mb-3">Phone</div>
-                                        <a href="tel:07595399525" className="font-display text-2xl font-bold text-charcoal-900 hover:text-lime-400 transition-colors">
+                                        <div className="text-xs font-bold tracking-[0.2em] uppercase text-lime-500 mb-3">Phone</div>
+                                        <a href="tel:07595399525" className="font-display text-2xl font-bold text-charcoal-900 hover:text-lime-500 transition-colors">
                                             07595 399525
                                         </a>
                                     </div>
                                     <div className="animate-on-scroll stagger-4">
-                                        <div className="text-xs font-bold tracking-[0.2em] uppercase text-lime-400 mb-3">Email</div>
-                                        <a href="mailto:plastersolutionsltd@gmail.com" className="font-display text-2xl font-bold text-charcoal-900 hover:text-lime-400 transition-colors break-all">
+                                        <div className="text-xs font-bold tracking-[0.2em] uppercase text-lime-500 mb-3">Email</div>
+                                        <a href="mailto:plastersolutionsltd@gmail.com" className="font-display text-2xl font-bold text-charcoal-900 hover:text-lime-500 transition-colors break-all">
                                             plastersolutionsltd@gmail.com
                                         </a>
                                     </div>
                                     <div className="animate-on-scroll stagger-5">
-                                        <div className="text-xs font-bold tracking-[0.2em] uppercase text-lime-400 mb-3">Location</div>
+                                        <div className="text-xs font-bold tracking-[0.2em] uppercase text-lime-500 mb-3">Location</div>
                                         <p className="font-display text-2xl font-bold text-charcoal-900">Sheffield, South Yorkshire</p>
                                         <p className="font-body text-sm text-slate-600 mt-2">
-                                            <a href="https://maps.google.com/?q=plaster+rendering+solutions+sheffield" target="_blank" rel="noopener noreferrer" className="text-lime-400 hover:text-lime-500 font-bold">
+                                            <a href="https://maps.google.com/?q=plaster+rendering+solutions+sheffield" target="_blank" rel="noopener noreferrer" className="text-lime-500 hover:text-lime-500 font-bold">
                                                 View on Google Maps →
                                             </a>
                                         </p>
                                     </div>
                                     <div className="animate-on-scroll stagger-5 pt-6 border-t border-slate-200">
-                                        <div className="text-xs font-bold tracking-[0.2em] uppercase text-lime-400 mb-4">Business Hours</div>
+                                        <div className="text-xs font-bold tracking-[0.2em] uppercase text-lime-500 mb-4">Business Hours</div>
                                         <div className="space-y-2 font-body text-sm text-slate-700 font-light">
                                             <div className="flex justify-between"><span>Monday - Friday:</span> <span className="font-bold">8:00 AM - 6:00 PM</span></div>
                                             <div className="flex justify-between"><span>Saturday:</span> <span className="font-bold">9:00 AM - 1:00 PM</span></div>
@@ -4228,7 +4361,7 @@
                                         </div>
                                         <button
                                             type="submit"
-                                            className="btn-premium magnetic-btn w-full bg-lime-400 text-charcoal-900 py-3 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300 shadow-lg hover:shadow-xl"
+                                            className="btn-premium magnetic-btn w-full bg-lime-500 text-charcoal-900 py-3 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300 shadow-lg hover:shadow-xl"
                                         >
                                             Send Message & Get Quote
                                         </button>
@@ -4361,7 +4494,7 @@
                     <section className="py-20 bg-gradient-to-br from-charcoal-900 to-charcoal-800 text-white">
                         <div className="max-w-6xl mx-auto px-6 lg:px-12">
                             <div className="text-center">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Professional Techniques</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Professional Techniques</span>
                                 <h1 className="animate-on-scroll stagger-1 font-display text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6">
                                     How We Apply Rendering & Plastering
                                 </h1>
@@ -4389,11 +4522,11 @@
                                             </div>
                                             <div className="grid grid-cols-2 gap-4">
                                                 <div>
-                                                    <p className="font-display text-sm font-bold text-lime-400 mb-1">Application Speed</p>
+                                                    <p className="font-display text-sm font-bold text-lime-500 mb-1">Application Speed</p>
                                                     <p className="font-body text-slate-900 font-bold">{method.speed}</p>
                                                 </div>
                                                 <div>
-                                                    <p className="font-display text-sm font-bold text-lime-400 mb-1">Base Cost</p>
+                                                    <p className="font-display text-sm font-bold text-lime-500 mb-1">Base Cost</p>
                                                     <p className="font-body text-slate-900 font-bold">{method.cost}</p>
                                                 </div>
                                             </div>
@@ -4404,7 +4537,7 @@
                                             <ul className="space-y-3">
                                                 {method.benefits.map((benefit, i) => (
                                                     <li key={i} className="flex gap-3">
-                                                        <span className="text-lime-400 font-bold flex-shrink-0">✓</span>
+                                                        <span className="text-lime-500 font-bold flex-shrink-0">✓</span>
                                                         <span className="font-body text-slate-700">{benefit}</span>
                                                     </li>
                                                 ))}
@@ -4416,7 +4549,7 @@
                                             <ol className="space-y-3">
                                                 {method.process.map((step, i) => (
                                                     <li key={i} className="flex gap-3">
-                                                        <span className="font-display font-bold text-charcoal-900 bg-lime-400 text-center w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-sm">{i + 1}</span>
+                                                        <span className="font-display font-bold text-charcoal-900 bg-lime-500 text-center w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-sm">{i + 1}</span>
                                                         <span className="font-body text-slate-700 pt-0.5">{step}</span>
                                                     </li>
                                                 ))}
@@ -4432,14 +4565,14 @@
                     <section className="py-20 bg-slate-50">
                         <div className="max-w-7xl mx-auto px-6 lg:px-12">
                             <div className="text-center mb-16">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Technical Details</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Technical Details</span>
                                 <h2 className="animate-on-scroll stagger-1 font-display text-4xl font-bold text-charcoal-900 mb-6">Spray Equipment Specifications</h2>
                             </div>
 
                             <div className="animate-on-scroll overflow-x-auto rounded-xl border-2 border-slate-200 bg-white">
                                 <table className="w-full text-sm">
                                     <thead>
-                                        <tr className="border-b-2 border-slate-200 bg-gradient-to-r from-lime-400/10 to-lime-400/5">
+                                        <tr className="border-b-2 border-slate-200 bg-gradient-to-r from-lime-500/10 to-lime-500/5">
                                             <th className="text-left px-6 py-4 font-display font-bold text-charcoal-900">Equipment Type</th>
                                             <th className="text-left px-6 py-4 font-display font-bold text-charcoal-900">Flow Rate</th>
                                             <th className="text-left px-6 py-4 font-display font-bold text-charcoal-900">Pressure Range</th>
@@ -4476,12 +4609,12 @@
                                     <div className="highlight-box">
                                         <h4 className="font-display font-bold text-charcoal-900 mb-3">BS EN 998-1:2016</h4>
                                         <p className="font-body text-sm text-slate-700 mb-3">Official UK/EU specification for mortar for masonry. Rendering and plastering mortar. All our renders comply with required performance criteria, water vapor permeability standards, and reaction to fire classifications.</p>
-                                        <p className="font-body text-xs text-lime-400 font-bold">✓ Full Compliance Verified</p>
+                                        <p className="font-body text-xs text-lime-500 font-bold">✓ Full Compliance Verified</p>
                                     </div>
                                     <div className="highlight-box">
                                         <h4 className="font-display font-bold text-charcoal-900 mb-3">Professional Installation</h4>
                                         <p className="font-body text-sm text-slate-700 mb-3">Our certified installers follow strict application procedures, proper substrate preparation, professional-grade primers, and rigorous quality control. Every project includes site inspections and final compliance verification.</p>
-                                        <p className="font-body text-xs text-lime-400 font-bold">✓ Certified Professionals</p>
+                                        <p className="font-body text-xs text-lime-500 font-bold">✓ Certified Professionals</p>
                                     </div>
                                 </div>
                             </div>
@@ -4492,7 +4625,7 @@
                     <section className="py-20 bg-white">
                         <div className="max-w-6xl mx-auto px-6 lg:px-12">
                             <div className="text-center mb-16">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Quick Comparison</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Quick Comparison</span>
                                 <h2 className="animate-on-scroll stagger-1 font-display text-4xl font-bold text-charcoal-900 mb-6">Spray vs Hand Application</h2>
                             </div>
 
@@ -4509,7 +4642,7 @@
                                         <p className="font-display font-bold text-charcoal-900 mb-4">{item.criterion}</p>
                                         <div className="space-y-2">
                                             <div className="flex items-start gap-2">
-                                                <span className="text-lime-400 font-bold">Spray:</span>
+                                                <span className="text-lime-500 font-bold">Spray:</span>
                                                 <p className="font-body text-sm text-slate-700">{item.spray}</p>
                                             </div>
                                             <div className="flex items-start gap-2">
@@ -4576,7 +4709,7 @@
                             </p>
                             <button
                                 onClick={() => { setCurrentPage('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                                className="btn-premium magnetic-btn inline-block bg-lime-400 text-charcoal-900 px-10 py-4 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300 shadow-lg hover:shadow-xl"
+                                className="btn-premium magnetic-btn inline-block bg-lime-500 text-charcoal-900 px-10 py-4 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300 shadow-lg hover:shadow-xl"
                             >
                                 Schedule Free Site Survey
                             </button>
@@ -4713,7 +4846,7 @@
                     <section className="py-20 bg-gradient-to-br from-charcoal-900 to-charcoal-800 text-white">
                         <div className="max-w-6xl mx-auto px-6 lg:px-12">
                             <div className="text-center">
-                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">Transparent Pricing</span>
+                                <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">Transparent Pricing</span>
                                 <h1 className="animate-on-scroll stagger-1 font-display text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6">
                                     Service Pricing & Comparison
                                 </h1>
@@ -4738,7 +4871,7 @@
                                                 <div className="space-y-2">
                                                     <div>
                                                         <p className="font-body text-xs uppercase tracking-widest text-slate-600 mb-1">Base Price</p>
-                                                        <p className="font-display text-2xl font-bold text-lime-400">{service.basePrice}</p>
+                                                        <p className="font-display text-2xl font-bold text-lime-500">{service.basePrice}</p>
                                                     </div>
                                                     <div className="pt-4 border-t border-slate-200">
                                                         <p className="font-body text-xs uppercase tracking-widest text-slate-600 mb-1">Warranty</p>
@@ -4755,7 +4888,7 @@
                                                 <ul className="space-y-3">
                                                     {service.pros.map((pro, i) => (
                                                         <li key={i} className="font-body text-sm text-slate-700 flex gap-3">
-                                                            <span className="text-lime-400 font-bold flex-shrink-0">+</span>
+                                                            <span className="text-lime-500 font-bold flex-shrink-0">+</span>
                                                             <span>{pro}</span>
                                                         </li>
                                                     ))}
@@ -4782,7 +4915,7 @@
                                         <div className="pt-6 border-t border-slate-200">
                                             <button
                                                 onClick={() => { setCurrentPage('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                                                className="btn-premium magnetic-btn bg-lime-400 text-charcoal-900 px-8 py-3 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300 shadow-lg hover:shadow-xl"
+                                                className="btn-premium magnetic-btn bg-lime-500 text-charcoal-900 px-8 py-3 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300 shadow-lg hover:shadow-xl"
                                             >
                                                 Get Quote for {service.name}
                                             </button>
@@ -4883,19 +5016,19 @@
                             </div>
                         </div>
 
-                        <div className="p-8 rounded-xl bg-gradient-to-br from-lime-400/15 to-lime-400/5 border-2 border-lime-400/30">
+                        <div className="p-8 rounded-xl bg-gradient-to-br from-lime-500/15 to-lime-500/5 border-2 border-lime-500/30">
                             <div className="grid md:grid-cols-3 gap-6 text-center">
                                 <div className="result-card">
                                     <p className="font-body text-sm text-slate-600 mb-2">Cost per m²</p>
-                                    <p className="font-display text-3xl font-bold text-lime-400">£{costPerM2}</p>
+                                    <p className="font-display text-3xl font-bold text-lime-500">£{costPerM2}</p>
                                 </div>
                                 <div className="result-card">
                                     <p className="font-body text-sm text-slate-600 mb-2">Total Area</p>
                                     <p className="font-display text-3xl font-bold text-charcoal-900">{squareMetres}m²</p>
                                 </div>
-                                <div className="result-card bg-gradient-to-br from-lime-400/25 to-lime-400/10 border-lime-400">
+                                <div className="result-card bg-gradient-to-br from-lime-500/25 to-lime-500/10 border-lime-500">
                                     <p className="font-body text-sm text-slate-600 mb-2">Estimated Total</p>
-                                    <p className="font-display text-3xl font-bold text-lime-400">£{totalCost.toLocaleString()}</p>
+                                    <p className="font-display text-3xl font-bold text-lime-500">£{totalCost.toLocaleString()}</p>
                                 </div>
                             </div>
                         </div>
@@ -4906,7 +5039,7 @@
                             </p>
                             <button
                                 onClick={() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })}
-                                className="w-full bg-lime-400 text-charcoal-900 py-3 rounded-lg font-bold text-sm hover:bg-lime-500 transition-all duration-300 cursor-pointer"
+                                className="w-full bg-lime-500 text-charcoal-900 py-3 rounded-lg font-bold text-sm hover:bg-lime-500 transition-all duration-300 cursor-pointer"
                             >
                                 Get Precise Quote →
                             </button>
@@ -4973,7 +5106,7 @@
                 <section className="py-20 bg-white">
                     <div className="max-w-7xl mx-auto px-6 lg:px-12">
                         <div className="text-center mb-16">
-                            <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-400 mb-6">
+                            <span className="animate-on-scroll inline-block text-xs font-bold tracking-[0.25em] uppercase text-lime-500 mb-6">
                                 Trusted Reviews
                             </span>
                             <h2 className="animate-on-scroll stagger-1 font-display text-3xl lg:text-4xl font-bold text-charcoal-900 leading-tight tracking-tight mb-4">
@@ -4987,7 +5120,7 @@
                                 href={gmbLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="animate-on-scroll stagger-3 inline-flex items-center gap-4 px-6 py-4 rounded-xl border-2 border-lime-400 bg-lime-400/10 hover:bg-lime-400/20 transition-all duration-300 mb-12"
+                                className="animate-on-scroll stagger-3 inline-flex items-center gap-4 px-6 py-4 rounded-xl border-2 border-lime-500 bg-lime-500/10 hover:bg-lime-500/20 transition-all duration-300 mb-12"
                             >
                                 <div className="text-left">
                                     <div className="flex gap-1 mb-1">
@@ -4997,7 +5130,7 @@
                                     </div>
                                     <p className="font-display font-bold text-charcoal-900 text-sm">View Google Reviews</p>
                                 </div>
-                                <span className="text-sm font-bold text-lime-400">→</span>
+                                <span className="text-sm font-bold text-lime-500">→</span>
                             </a>
                         </div>
 
@@ -5008,7 +5141,7 @@
                                     href={gmbLink}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className={`animate-on-scroll stagger-${Math.min(index + 1, 5)} premium-hover rounded-xl p-6 bg-white border-2 border-slate-200 hover:border-lime-400 transition-all duration-300 cursor-pointer group`}
+                                    className={`animate-on-scroll stagger-${Math.min(index + 1, 5)} premium-hover rounded-xl p-6 bg-white border-2 border-slate-200 hover:border-lime-500 transition-all duration-300 cursor-pointer group`}
                                 >
                                     <div className="flex justify-between items-start mb-4">
                                         <div className="flex gap-1">
@@ -5032,7 +5165,7 @@
                                                 {review.date}
                                             </p>
                                             {review.verified && (
-                                                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-lime-400/20 border border-lime-400/50">
+                                                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-lime-500/20 border border-lime-500/50">
                                                     <span className="text-xs font-bold text-lime-600">✓ Verified</span>
                                                 </span>
                                             )}
@@ -5040,7 +5173,7 @@
                                     </div>
 
                                     <div className="mt-4 pt-4 border-t border-slate-200 opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <p className="text-xs font-bold text-lime-400">Read on Google →</p>
+                                        <p className="text-xs font-bold text-lime-500">Read on Google →</p>
                                     </div>
                                 </a>
                             ))}
@@ -5051,7 +5184,7 @@
                                 href={gmbLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="animate-on-scroll magnetic-btn inline-flex items-center gap-3 bg-lime-400 text-charcoal-900 px-10 py-4 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300"
+                                className="animate-on-scroll magnetic-btn inline-flex items-center gap-3 bg-lime-500 text-charcoal-900 px-10 py-4 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300"
                             >
                                 View All Reviews on Google
                                 <span className="text-lg">→</span>
@@ -5059,6 +5192,132 @@
                         </div>
                     </div>
                 </section>
+            );
+        }
+
+        // ============================================================
+        // COMPONENT: Portfolio Page
+        // ============================================================
+        function PortfolioPage() {
+            const { setCurrentPage } = useContext(AppContext);
+            useScrollAnimation();
+
+            const portfolioProjects = [
+                {
+                    id: 1,
+                    title: 'Loxley Residence - Silicone Render',
+                    location: 'Loxley, Sheffield',
+                    service: 'Silicone Rendering',
+                    image: 'images/case-studies/IMG_0291.jpeg',
+                    description: 'White silicone render finishing on two-story residential property featuring white sash windows. Professional application delivering exceptional durability and self-cleaning properties.',
+                    features: ['Silicone Rendering', 'Residential', 'White Finish', '25-Year Warranty']
+                },
+                {
+                    id: 2,
+                    title: 'Sheffield Project Showcase',
+                    location: 'Sheffield Area',
+                    service: 'Professional Rendering & Plastering',
+                    image: 'images/case-studies/IMG_4912.jpeg',
+                    description: 'Comprehensive exterior and interior finishing project demonstrating our expertise across multiple rendering and plastering services. High-quality craftsmanship and attention to detail.',
+                    features: ['Multiple Services', 'Professional Finish', 'Attention to Detail', 'Warranty Coverage']
+                }
+            ];
+
+            return (
+                <div className="page-transition">
+                    {/* Hero Section */}
+                    <section className="relative w-full pt-32 pb-20 bg-gradient-to-b from-charcoal-900 via-charcoal-800 to-charcoal-900">
+                        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                            <div className="text-center mb-16">
+                                <button onClick={() => { setCurrentPage('services'); window.scrollTo({ top: 0 }); }} className="animate-on-scroll text-lime-500 text-sm font-bold hover:text-lime-300 mb-6 flex items-center justify-center gap-2 mx-auto">
+                                    ← Back to Services
+                                </button>
+                                <h1 className="animate-on-scroll stagger-1 font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-8">
+                                    Our <span className="text-lime-500">Portfolio</span>
+                                </h1>
+                                <p className="animate-on-scroll stagger-2 font-body text-xl text-slate-200 leading-relaxed mb-6 font-light max-w-3xl mx-auto">
+                                    Explore our completed projects across Sheffield. Each project showcases our commitment to excellence, precision, and customer satisfaction. From silicone rendering to internal plastering, see the quality that defines Plaster and Rendering Solutions.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Portfolio Grid */}
+                    <section className="py-20 bg-slate-50">
+                        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                            <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
+                                {portfolioProjects.map((project, i) => (
+                                    <div key={project.id} className={`animate-on-scroll stagger-${Math.min(i + 1, 3)} group`}>
+                                        {/* Project Image */}
+                                        <div className="relative rounded-2xl overflow-hidden mb-8 shadow-2xl hover:shadow-3xl transition-all duration-500 h-96">
+                                            <img
+                                                src={project.image}
+                                                alt={`${project.title} - ${project.location}`}
+                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                                <div className="p-6 w-full">
+                                                    <p className="text-lime-500 text-sm font-bold tracking-widest uppercase mb-2">{project.service}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* Project Details */}
+                                        <div>
+                                            <h3 className="font-display text-2xl lg:text-3xl font-bold text-charcoal-900 mb-2 group-hover:text-lime-500 transition-colors duration-300">
+                                                {project.title}
+                                            </h3>
+                                            <p className="text-slate-600 font-body text-lg mb-4 font-light">
+                                                📍 {project.location}
+                                            </p>
+                                            <p className="font-body text-slate-700 leading-relaxed mb-6 font-light">
+                                                {project.description}
+                                            </p>
+
+                                            {/* Features */}
+                                            <div className="flex flex-wrap gap-3 mb-6">
+                                                {project.features.map((feature, idx) => (
+                                                    <span key={idx} className="inline-block px-3 py-1 bg-lime-500/20 text-lime-700 font-body text-xs font-bold rounded-full border border-lime-500/50">
+                                                        {feature}
+                                                    </span>
+                                                ))}
+                                            </div>
+
+                                            {/* CTA Button */}
+                                            <button
+                                                onClick={() => { setCurrentPage('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                                                className="btn-premium magnetic-btn bg-lime-500 text-charcoal-900 px-6 py-3 rounded-lg text-sm font-bold tracking-wide hover:bg-lime-500 transition-all duration-300 shadow-lg hover:shadow-xl"
+                                            >
+                                                Request Similar Project
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* CTA Section */}
+                    <section className="py-20 bg-charcoal-900">
+                        <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
+                            <h2 className="animate-on-scroll font-display text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight mb-8">
+                                Ready to Transform Your Property?
+                            </h2>
+                            <p className="animate-on-scroll stagger-1 font-body text-lg text-slate-200 leading-relaxed mb-12 font-light">
+                                Contact us today for a free consultation. Our team will assess your property and provide a detailed quote for your rendering or plastering project.
+                            </p>
+                            <button
+                                onClick={() => { setCurrentPage('contact'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                                className="btn-premium animate-on-scroll stagger-2 magnetic-btn bg-lime-500 text-charcoal-900 px-10 py-4 rounded-lg text-base font-bold tracking-wide hover:bg-lime-500 transition-all duration-300 shadow-lg hover:shadow-2xl"
+                            >
+                                Get Your Free Quote Today
+                            </button>
+                        </div>
+                    </section>
+
+                    {/* Google Reviews */}
+                    <GoogleReviewsSection />
+                </div>
             );
         }
 
@@ -5073,13 +5332,15 @@
             };
 
             return (
-                <footer className="bg-charcoal-900 py-16 border-t-2 border-lime-400">
+                <footer className="bg-charcoal-900 py-16 border-t-2 border-lime-500">
                     <div className="max-w-7xl mx-auto px-6 lg:px-12">
                         <div className="grid md:grid-cols-3 gap-12 mb-12">
                             <div>
                                 <div className="flex items-center gap-3 mb-6">
-                                    <LogoP className="w-10 h-10" />
-                                    <span className="font-display font-bold text-white text-base tracking-tight">P&RS</span>
+                                    <div className="bg-white rounded-lg p-2 flex items-center justify-center">
+                                        <LogoP className="w-8 h-8" />
+                                    </div>
+                                    <span className="font-display font-bold text-white text-base tracking-tight">P&R Solutions</span>
                                 </div>
                                 <p className="font-body text-slate-400 font-light leading-relaxed">
                                     Professional rendering & plastering solutions in Sheffield. Silicone rendering, monocouche, EWI, and internal plastering.
@@ -5089,7 +5350,7 @@
                                 <h4 className="font-display text-sm font-bold text-white mb-6 tracking-wide">Navigation</h4>
                                 <div className="flex flex-col gap-3">
                                     {['home', 'services', 'warranties', 'faq', 'contact'].map((p) => (
-                                        <button key={p} onClick={() => navigate(p)} className="text-left font-body text-sm text-slate-400 hover:text-lime-400 transition-colors duration-300 capitalize font-light">
+                                        <button key={p} onClick={() => navigate(p)} className="text-left font-body text-sm text-slate-400 hover:text-lime-500 transition-colors duration-300 capitalize font-light">
                                             {p === 'warranties' ? 'Warranties' : p}
                                         </button>
                                     ))}
@@ -5098,10 +5359,10 @@
                             <div>
                                 <h4 className="font-display text-sm font-bold text-white mb-6 tracking-wide">Contact</h4>
                                 <div className="flex flex-col gap-3">
-                                    <a href="tel:07595399525" className="text-left font-body text-sm text-slate-400 hover:text-lime-400 transition-colors duration-300 font-light">
+                                    <a href="tel:07595399525" className="text-left font-body text-sm text-slate-400 hover:text-lime-500 transition-colors duration-300 font-light">
                                         07595 399525
                                     </a>
-                                    <a href="mailto:plastersolutionsltd@gmail.com" className="text-left font-body text-sm text-slate-400 hover:text-lime-400 transition-colors duration-300 font-light break-all">
+                                    <a href="mailto:plastersolutionsltd@gmail.com" className="text-left font-body text-sm text-slate-400 hover:text-lime-500 transition-colors duration-300 font-light break-all">
                                         plastersolutionsltd@gmail.com
                                     </a>
                                 </div>
@@ -5245,6 +5506,7 @@
                 switch (currentPage) {
                     case 'home': return <HomePage />;
                     case 'services': return <ServicesPage />;
+                    case 'portfolio': return <PortfolioPage />;
                     case 'how-we-apply': return <HowWeApplyPage />;
                     case 'pricing': return <PricingPage />;
                     case 'warranties': return <WarrantiesPage />;
