@@ -283,6 +283,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+    <!-- SEO Configuration -->
+    <script src="seo-routes-config.js"></script>
 
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -5117,6 +5119,117 @@
             );
         }
 
+
+        // ============================================================
+        // SEO MANAGER COMPONENT
+        // ============================================================
+        function SEOManager({ page }) {
+            React.useEffect(() => {
+                if (!window.seoRoutesConfig) return;
+                
+                let config = null;
+                
+                // Check if it's a service page
+                if (page && page.startsWith('service-')) {
+                    const serviceId = page.replace('service-', '');
+                    const service = Object.values(window.seoRoutesConfig.services).find(s => s.id === serviceId);
+                    if (service) {
+                        config = {
+                            title: service.seo.title,
+                            description: service.seo.description,
+                            canonicalUrl: service.seo.canonicalUrl,
+                            og: service.og,
+                            schema: service.schema
+                        };
+                    }
+                } else if (page && window.seoRoutesConfig.pages[page]) {
+                    config = window.seoRoutesConfig.pages[page].seo;
+                } else {
+                    // Default to home
+                    config = window.seoRoutesConfig.pages.home.seo;
+                }
+
+                if (!config) return;
+
+                // Update title
+                if (config.title) {
+                    document.title = config.title;
+                }
+
+                // Update meta description
+                const updateMeta = (selector, attrName, value) => {
+                    let elem = document.querySelector(selector);
+                    if (!elem) {
+                        elem = document.createElement('meta');
+                        if (attrName === 'property') {
+                            elem.setAttribute('property', value === 'og:title' ? 'og:title' : value);
+                            elem.setAttribute('content', '');
+                        } else {
+                            elem.setAttribute('name', attrName);
+                            elem.setAttribute('content', '');
+                        }
+                        document.head.appendChild(elem);
+                    }
+                    if (attrName === 'property') {
+                        elem.setAttribute('content', value);
+                    } else {
+                        elem.setAttribute('content', value);
+                    }
+                };
+
+                if (config.description) {
+                    updateMeta('meta[name="description"]', 'name', config.description);
+                    const elem = document.querySelector('meta[name="description"]');
+                    if (elem) elem.setAttribute('content', config.description);
+                }
+
+                // Update canonical
+                let canonical = document.querySelector('link[rel="canonical"]');
+                if (!canonical) {
+                    canonical = document.createElement('link');
+                    canonical.setAttribute('rel', 'canonical');
+                    document.head.appendChild(canonical);
+                }
+                if (config.canonicalUrl) {
+                    canonical.setAttribute('href', config.canonicalUrl);
+                }
+
+                // Update Open Graph
+                if (config.og) {
+                    const setOG = (property, content) => {
+                        let elem = document.querySelector(`meta[property="${property}"]`);
+                        if (!elem) {
+                            elem = document.createElement('meta');
+                            elem.setAttribute('property', property);
+                            document.head.appendChild(elem);
+                        }
+                        elem.setAttribute('content', content);
+                    };
+                    
+                    if (config.og.title) setOG('og:title', config.og.title);
+                    if (config.og.description) setOG('og:description', config.og.description);
+                    if (config.og.image) setOG('og:image', config.og.image);
+                }
+
+                // Update schema markup
+                if (config.schema) {
+                    let schemaScript = document.querySelector('script[data-seo="service-schema"]');
+                    if (!schemaScript) {
+                        schemaScript = document.createElement('script');
+                        schemaScript.type = 'application/ld+json';
+                        schemaScript.setAttribute('data-seo', 'service-schema');
+                        document.head.appendChild(schemaScript);
+                    }
+                    schemaScript.textContent = JSON.stringify(config.schema);
+                }
+
+                // Scroll to top on page change
+                window.scrollTo(0, 0);
+            }, [page]);
+
+            return null;
+        }
+
         // ============================================================
         // APP
         // ============================================================
@@ -5143,6 +5256,7 @@
 
             return (
                 <AppContext.Provider value={{ currentPage, setCurrentPage }}>
+                    <SEOManager page={currentPage} />
                     <Navigation />
                     <main>{renderPage()}</main>
                     <Footer />
