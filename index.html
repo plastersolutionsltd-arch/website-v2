@@ -1541,7 +1541,7 @@
             return (
                 <div
                     ref={sliderRef}
-                    className="relative w-full h-96 cursor-col-resize overflow-hidden rounded-xl bg-charcoal-900 select-none"
+                    className="relative w-full h-64 sm:h-80 md:h-96 cursor-col-resize overflow-hidden rounded-xl bg-charcoal-900 select-none"
                     onMouseMove={handleMouseMove}
                     onMouseLeave={handleMouseUp}
                     onTouchMove={handleTouchMove}
@@ -1565,7 +1565,7 @@
                         <img
                             src={beforeImage}
                             alt={`${beforeLabel}: ${altText}`}
-                            className="w-screen h-full object-cover"
+                            className="h-full object-cover"
                             draggable="false"
                             style={{ width: `${sliderRef.current?.offsetWidth}px` }}
                         />
@@ -1579,17 +1579,17 @@
                         onTouchStart={handleTouchStart}
                     >
                         {/* Handle Icon */}
-                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-lime-500 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-200">
-                            <span className="text-charcoal-900 font-bold text-lg select-none">‹ ›</span>
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 sm:w-12 sm:h-12 bg-lime-500 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-200">
+                            <span className="text-charcoal-900 font-bold text-sm sm:text-lg select-none">‹ ›</span>
                         </div>
                     </div>
 
                     {/* Labels */}
-                    <div className="absolute top-6 left-6 bg-charcoal-900/80 backdrop-blur-sm px-4 py-2 rounded-lg border border-lime-500/50">
-                        <span className="text-white font-display font-bold text-sm">{beforeLabel}</span>
+                    <div className="absolute top-3 left-3 sm:top-6 sm:left-6 bg-charcoal-900/80 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg border border-lime-500/50">
+                        <span className="text-white font-display font-bold text-xs sm:text-sm">{beforeLabel}</span>
                     </div>
-                    <div className="absolute top-6 right-6 bg-charcoal-900/80 backdrop-blur-sm px-4 py-2 rounded-lg border border-lime-500/50">
-                        <span className="text-white font-display font-bold text-sm">{afterLabel}</span>
+                    <div className="absolute top-3 right-3 sm:top-6 sm:right-6 bg-charcoal-900/80 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg border border-lime-500/50">
+                        <span className="text-white font-display font-bold text-xs sm:text-sm">{afterLabel}</span>
                     </div>
                 </div>
             );
@@ -2772,11 +2772,11 @@
             return (
                 <div className="page-transition">
                     {/* Hero - Full Width Background */}
-                    <section className="relative w-full h-screen flex items-center justify-start overflow-hidden" style={{
+                    <section className="relative w-full min-h-screen md:h-screen flex items-center justify-start overflow-hidden" style={{
                         backgroundImage: `linear-gradient(135deg, rgba(29, 31, 33, 0.5) 0%, rgba(45, 45, 45, 0.6) 100%), url('${service.heroImage}')`,
                         backgroundSize: "cover",
                         backgroundPosition: "center right",
-                        backgroundAttachment: "fixed"
+                        backgroundAttachment: window.innerWidth >= 768 ? "fixed" : "scroll"
                     }} aria-label={`${service.shortTitle} service provided by Plaster and Rendering Solutions in Sheffield, South Yorkshire`}>
                         <div className="absolute inset-0 bg-gradient-to-r from-charcoal-900/85 via-charcoal-900/70 to-transparent"></div>
 
@@ -3455,11 +3455,11 @@
             return (
                 <div className="page-transition">
                     {/* Hero - Full Width Background */}
-                    <section className="relative w-full h-screen flex items-center justify-start overflow-hidden" style={{
+                    <section className="relative w-full min-h-screen md:h-screen flex items-center justify-start overflow-hidden" style={{
                         backgroundImage: "linear-gradient(135deg, rgba(29, 31, 33, 0.5) 0%, rgba(45, 45, 45, 0.6) 100%), url('images/case-studies/IMG_0291.jpeg')",
                         backgroundSize: "cover",
                         backgroundPosition: "center right",
-                        backgroundAttachment: "fixed"
+                        backgroundAttachment: window.innerWidth >= 768 ? "fixed" : "scroll"
                     }} aria-label="White silicone render finishing on two-story residential property in Loxley, Sheffield by Plaster and Rendering Solutions, featuring white sash windows">
                         <div className="absolute inset-0 bg-gradient-to-r from-charcoal-900/85 via-charcoal-900/70 to-transparent"></div>
 
@@ -5220,6 +5220,60 @@
                     image: 'images/case-studies/IMG_4912.jpeg',
                     description: 'Comprehensive exterior and interior finishing project demonstrating our expertise across multiple rendering and plastering services. High-quality craftsmanship and attention to detail.',
                     features: ['Multiple Services', 'Professional Finish', 'Attention to Detail', 'Warranty Coverage']
+                },
+                {
+                    id: 3,
+                    title: 'Grenoside Silicone Rendering',
+                    location: 'Grenoside, Sheffield',
+                    service: 'Silicone Rendering',
+                    image: 'images/case-studies/case/grenoside-silicone.jpeg',
+                    description: 'Premium silicone rendering installation on residential property in Grenoside. Superior weather protection, self-cleaning properties, and exceptional durability with 25-year manufacturer warranty.',
+                    features: ['Silicone Rendering', 'Residential', 'Weather Resistant', '25-Year Warranty']
+                },
+                {
+                    id: 4,
+                    title: 'Wentworth Professional Plastering',
+                    location: 'Wentworth, Sheffield',
+                    service: 'Internal Plastering',
+                    image: 'images/case-studies/case/wentworth-plastering.jpeg',
+                    description: 'Expert float and skim plastering throughout residential property in Wentworth. Delivered impeccable paint-ready finishes with meticulous attention to detail and superior workmanship.',
+                    features: ['Float & Skim', 'Residential', 'Paint-Ready', 'Premium Finish']
+                },
+                {
+                    id: 5,
+                    title: 'Bentsgreen External Wall Insulation',
+                    location: 'Bentsgreen, Sheffield',
+                    service: 'External Wall Insulation',
+                    image: 'images/case-studies/case/bentsgreen-ewi.jpeg',
+                    description: 'Comprehensive EWI system with energy-efficient installation in Bentsgreen. Improved thermal performance, enhanced EPC rating, and modern aesthetic transformation.',
+                    features: ['EWI System', 'Energy Efficient', 'EPC Improvement', 'Modern Finish']
+                },
+                {
+                    id: 6,
+                    title: 'Stannington Silicone Render Excellence',
+                    location: 'Stannington, Sheffield',
+                    service: 'Silicone Rendering',
+                    image: 'images/case-studies/case/stannington-silicone.jpeg',
+                    description: 'Outstanding silicone rendering transformation in Stannington. Professional application delivering exceptional durability, superior weather protection, and stunning visual impact.',
+                    features: ['Silicone Rendering', 'Residential', 'Premium Finish', 'Professional Grade']
+                },
+                {
+                    id: 7,
+                    title: 'Ecclesall Silicone Render Transformation',
+                    location: 'Ecclesall, Sheffield',
+                    service: 'Silicone Rendering',
+                    image: 'images/case-studies/case/ecclesall-silicone.jpeg',
+                    description: 'Complete property transformation with premium silicone rendering in Ecclesall. Self-cleaning technology, breathable finish, and exceptional curb appeal with lasting protection.',
+                    features: ['Silicone Rendering', 'Transformation', 'Self-Cleaning', 'Breathable']
+                },
+                {
+                    id: 8,
+                    title: 'Sandygate Silicone Rendering',
+                    location: 'Sandygate, Sheffield',
+                    service: 'Silicone Rendering',
+                    image: 'images/case-studies/case/sandygate-siliconei.jpg',
+                    description: 'Professional silicone rendering installation on residential property in Sandygate. Premium finish with superior weather protection and low-maintenance self-cleaning properties.',
+                    features: ['Silicone Rendering', 'Residential', 'Low Maintenance', 'Professional Install']
                 }
             ];
 
