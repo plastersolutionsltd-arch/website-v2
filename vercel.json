@@ -1,5 +1,6 @@
 {
   "rewrites": [
+    { "source": "/", "destination": "/index.html" },
     { "source": "/silicone-render/", "destination": "/index.html" },
     { "source": "/monocouche-render/", "destination": "/index.html" },
     { "source": "/external-wall-insulation/", "destination": "/index.html" },
